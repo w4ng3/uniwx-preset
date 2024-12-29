@@ -15,11 +15,12 @@ export default defineConfig({
       },
     }),
     presetIcons({
-      scale: 1.2,
       warn: true,
       extraProperties: {
         'display': 'inline-block',
-        'vertical-align': 'middle',
+        'height': '1.2em',
+        'width': '1.2em',
+        'vertical-align': 'text-bottom',
       },
       // HBuilderX 必须针对要使用的 Collections 做异步导入
       // collections: {
@@ -31,4 +32,18 @@ export default defineConfig({
     transformerDirectives(),
     transformerVariantGroup(),
   ],
+  shortcuts: [
+    {
+      'bg-base': 'bg-white dark:bg-black',
+      'color-base': 'text-black dark:text-white',
+      'border-base': 'border-[#8884]',
+    },
+    [/^btn-(\w+)$/, ([_, color]) => `op50 px2.5 py1 transition-all duration-200 ease-out no-underline! hover:(op100 text-${color} bg-${color}/10) border border-base! rounded`],
+  ],
+  rules: [],
+  theme: {
+    colors: {
+      primary: '#1473E2',
+    },
+  },
 })

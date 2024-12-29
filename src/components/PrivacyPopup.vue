@@ -7,15 +7,14 @@ interface Props {
   subDesc?: string // 字描述
   protocol?: string // 协议名称
 }
-
 withDefaults(defineProps<Props>(), {
   title: '用户隐私保护提示',
   desc: '感谢您使用本应用，您使用本应用的服务之前请仔细阅读并同意',
   subDesc: '。当您点击同意并开始时用产品服务时，即表示你已理解并同意该条款内容，该条款将对您产生法律约束力。如您拒绝，将无法使用相应服务。',
   protocol: '《用户隐私保护指引》',
 })
-
 const emit = defineEmits(['agree', 'disagree'])
+
 const showPopup = ref<boolean>(false) // 是否展示popup
 
 const privacyResolves = ref(new Set()) // onNeedPrivacyAuthorization的reslove
@@ -124,6 +123,7 @@ export default {
 
 <style lang="scss" scoped>
 @import 'wot-design-uni/components/wd-button/index.scss';
+
 :deep(.wd-privacy-popup) {
   width: 600rpx;
   padding: 0 24rpx;

@@ -1,9 +1,9 @@
 import { defineManifestConfig } from '@uni-helper/vite-plugin-uni-manifest'
 
 export default defineManifestConfig({
-  'name': 'uni-preset',
+  'name': 'uniwx-preset',
   'appid': '',
-  'description': 'uniapp 项目预设模版',
+  'description': 'uniapp 微信小程序预设模版',
   'versionName': '1.0.0',
   'versionCode': '100',
   'transformPx': false,

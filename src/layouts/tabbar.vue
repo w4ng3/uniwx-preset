@@ -1,12 +1,3 @@
-<!--
- * @Author: weisheng
- * @Date: 2024-11-01 12:31:47
- * @LastEditTime: 2024-11-14 19:02:06
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-demo\src\layouts\tabbar.vue
- * 记得注释
--->
 <script lang="ts" setup>
 import type { ConfigProviderThemeVars } from 'wot-design-uni'
 import { useTabbar } from '@/composables/useTabbar'
@@ -58,9 +49,9 @@ export default {
     <wd-tabbar :model-value="activeTabbar.name" placeholder bordered safe-area-inset-bottom fixed @change="handleTabbarChange">
       <wd-tabbar-item v-for="(item, index) in tabbarList" :key="index" :name="item.name" :value="getTabbarItemValue(item.name)" :title="item.title" :icon="item.icon" />
     </wd-tabbar>
-    <wd-notify />
+    <!-- <wd-notify /> -->
     <wd-toast />
     <wd-message-box />
-    <privacy-popup />
+    <!-- <privacy-popup /> -->
   </wd-config-provider>
 </template>

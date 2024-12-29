@@ -1,12 +1,3 @@
-<!--
- * @Author: weisheng
- * @Date: 2024-11-01 11:44:38
- * @LastEditTime: 2024-11-14 19:02:48
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-demo\src\pages\hi.vue
- * 记得注释
--->
 <script lang="ts" setup>
 </script>
 

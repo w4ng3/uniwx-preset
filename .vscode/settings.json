@@ -3,6 +3,12 @@
   "prettier.enable": false,
   "editor.formatOnSave": false,
 
+  // 文件不在工作空间显示
+  "files.exclude": {
+    "**/.git": false,
+    "**/.DS_Store": true
+  },
+
   // Auto fix
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": "explicit",

@@ -1,12 +1,11 @@
 <h2 align="center">
-Wot-Demo
+Uniwx-Preset
 </h2>
 
 <p align="center">基于<a href="[vitesse-uni-app](https://github.com/uni-helper/vitesse-uni-app)">vitesse-uni-app</a>的Wot Design Uni 组件库快速起手项目</p>
 
 <p align="center">
-  <a href="https://wot-demo.netlify.app/">📱 在线预览</a>
-  <a href="https://vitesse-docs.netlify.app/">📖 vitesse-uni-app 文档</a>
+用于开发微信小程序
 </p>
 
 ## 特性
@@ -31,7 +30,31 @@ Wot-Demo
 
 - 🦾 [TypeScript](https://www.typescriptlang.org/) & [ESLint](https://eslint.org/) - 保证代码质量
 
-## 鸣谢
+---
 
-- [uni-helper](https://github.com/uni-helper) - 感谢 uni-helper 团队为 uni-app 开发体验优化做出的贡献。
-- [vitesse-uni-app](https://github.com/uni-helper/vitesse-uni-app) - 感谢 vitesse-uni-app 提供的快速起手项目。
+## 快速启动
+
+```bash
+pnpm i
+pnpm dev:wx
+```
+
+接着会生在 `dist/dev/mp-weixin`里编译成微信小程序，导入到微信开发者工具进行预览和调试。
+
+路由无需在 `page.json`里手动配置，采用[基于文件的路由系统自动生成](https://github.com/uni-helper/vite-plugin-uni-pages)，需要在对应 vue 文件里添加如下配置：
+```vue
+<route lang="json">
+  {
+    "layout": "default",
+    "name": "XXXRouteName",
+    "style": {
+      "navigationBarTitleText": "TITLE"
+    }
+  }
+</route>
+```
+
+
+## tips
+
+- 如果提交时 husky 的勾子无法正常触发，运行 `chmod ug+x .husky/*` 后再尝试。

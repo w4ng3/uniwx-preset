@@ -21,9 +21,9 @@ export default {
 <template>
   <wd-config-provider :theme-vars="themeVars" custom-style="background-color: #f5f5f5;min-height: 100vh">
     <slot />
-    <wd-notify />
+    <!-- <wd-notify /> -->
     <wd-toast />
     <wd-message-box />
-    <privacy-popup />
+    <!-- <privacy-popup /> -->
   </wd-config-provider>
 </template>

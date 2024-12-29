@@ -1,20 +1,12 @@
-/*
- * @Author: weisheng
- * @Date: 2024-11-01 11:44:38
- * @LastEditTime: 2024-11-01 13:06:45
- * @LastEditors: weisheng
- * @Description:
- * @FilePath: \wot-demo\pages.config.ts
- * 记得注释
- */
 import { defineUniPages } from '@uni-helper/vite-plugin-uni-pages'
 
 export default defineUniPages({
   pages: [],
   globalStyle: {
-    navigationBarTitleText: 'Wot-Demo',
-    navigationBarTextStyle: 'white',
-    navigationStyle: 'custom',
+    navigationBarTitleText: 'Uniwx-Preset',
+    navigationStyle: 'default',
+    navigationBarTextStyle: 'black',
+    navigationBarBackgroundColor: '#f4f4f4',
   },
   tabBar: {
     custom: true,
@@ -25,6 +17,22 @@ export default defineUniPages({
       pagePath: 'pages/index',
     }, {
       pagePath: 'pages/hi',
+    }, {
+      pagePath: 'pages-my/my',
     }],
   },
+  // 或者使用默认Tabbar
+  // tabBar: {
+  //   custom: false,
+  //   height: '70px',
+  //   color: '#bfbfbf',
+  //   backgroundColor: '#fff',
+  //   selectedColor: '#4275f6',
+  //   list: [{
+  //     text: '首页',
+  //     pagePath: 'pages/index',
+  //     iconPath: 'static/tabbar/home.png',
+  //     selectedIconPath: 'static/tabbar/home-a.png',
+  //   }],
+  // },
 })
