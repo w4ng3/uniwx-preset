@@ -58,3 +58,12 @@ pnpm dev:wx
 ## tips
 
 - 如果提交时 husky 的勾子无法正常触发，运行 `chmod ug+x .husky/*` 后再尝试。
+- 小程序白名单域名
+   ```
+   https://api.iconify.design
+   ```
+## TODO
+
+- [ ] 城市选择器
+- [ ] 主题配置
+- [ ] 暗黑模式

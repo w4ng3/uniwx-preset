@@ -6,7 +6,6 @@ export default defineManifestConfig({
   'description': 'uniapp 微信小程序预设模版',
   'versionName': '1.0.0',
   'versionCode': '100',
-  'transformPx': false,
   /* 5+App特有相关 */
   'app-plus': {
     usingComponents: true,
@@ -16,7 +15,6 @@ export default defineManifestConfig({
       alwaysShowBeforeRender: true,
       waiting: true,
       autoclose: true,
-      delay: 0,
     },
     /* 模块配置 */
     modules: {},

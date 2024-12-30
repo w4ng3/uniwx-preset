@@ -1,7 +1,7 @@
 import { onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app'
 import { type Reactive, type Ref, ref } from 'vue'
 /**
- * 下拉刷新，上拉加载 hook
+ * 下拉刷新，上拉加载
  * @list 响应列表
  * @url 请求url
  * @query 额外body传参
@@ -37,7 +37,6 @@ export default <T extends IPage>(list: Ref<any[]>, url: string, query: Reactive<
 
   onPullDownRefresh(() => {
     // console.log('usepull2refresh-- 监听用户下拉动作')
-    // pageNum.value = page
     onLoadList()
   })
 

@@ -43,11 +43,20 @@ export default {
 
 <template>
   <wd-config-provider :theme-vars="themeVars" custom-style="min-height: 100vh">
-    <wd-navbar :title="activeTabbar.title" safe-area-inset-top placeholder fixed :bordered="false" />
-
     <slot />
-    <wd-tabbar :model-value="activeTabbar.name" placeholder bordered safe-area-inset-bottom fixed @change="handleTabbarChange">
-      <wd-tabbar-item v-for="(item, index) in tabbarList" :key="index" :name="item.name" :value="getTabbarItemValue(item.name)" :title="item.title" :icon="item.icon" />
+    <wd-tabbar
+      :model-value="activeTabbar.name" safe-area-inset-bottom bordered placeholder fixed
+      custom-class="pt-6 mb-2"
+      @change="handleTabbarChange"
+    >
+      <wd-tabbar-item
+        v-for="(item, index) in tabbarList"
+        :key="index"
+        :name="item.name"
+        :value="getTabbarItemValue(item.name)"
+        :title="item.title"
+        :icon="item.icon"
+      />
     </wd-tabbar>
     <!-- <wd-notify /> -->
     <wd-toast />

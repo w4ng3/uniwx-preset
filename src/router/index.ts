@@ -17,18 +17,28 @@ function generateRoutes() {
   }
   return routes
 }
+// 路由白名单
+const whiteRoutes: NavigateToOptions['url'][] = ['/pages/index', '/pages/hi', '/pages/my', '/pages-my/login']
+
 
 const router = createRouter({
   routes: generateRoutes(),
 })
+// 跳转前触发，只有使用 router 跳转才会触发，使用 uni.navigateTo等方法无法触发
 router.beforeEach((to, from, next) => {
-  // console.log(to)
-  // console.log(from)
-  next()
+  const userStore = useUserStore()
+  if (userStore.isLogin || whiteRoutes.includes(to.path as unknown as NavigateToOptions['url'])) {
+    next()
+  }
+  else {
+    uni.showToast({ title: '请登录后查看', icon: 'none' })
+  }
 })
-router.afterEach((to, from) => {
-  // console.log(to)
-  // console.log(from)
+
+// 跳转后触发，对 uni.navigateTo等方法也有效
+router.afterEach((_to, _from) => {
+  // console.log('to:', _to)
+  // console.log('from:', _from)
 })
 
 export default router

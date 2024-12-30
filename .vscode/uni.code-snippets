@@ -1,0 +1,26 @@
+{
+  "页面模版": {
+    "prefix": "upage",
+    "body": [
+      "<route lang=\"json\">",
+      "  {",
+      "    \"layout\": \"default\",",
+      "    \"name\": \"$1\",",
+      "    \"style\": {",
+      "      \"navigationBarTitleText\": \"$2\"",
+      "    }",
+      "  }",
+      "</route>",
+      "",
+      "<script lang=\"ts\" setup>",
+      "",
+      "</script>",
+      "",
+      "<template>",
+      "  <div>uni-page</div>",
+      "</template>",
+      ""
+    ],
+    "description": "uni-page"
+  }
+}

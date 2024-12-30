@@ -101,15 +101,15 @@ export function useLocation() {
       success: (res) => {
         if (res.authSetting['scope.userLocation']) {
           /* 用户授权成功时走这里 */
-          console.log('已授权')
+          // console.log('已授权')
         }
         else if (res.authSetting['scope.userLocation'] === undefined) {
           /* 用户未授权时走这里 */
-          console.log('没有授权')
+          // console.log('没有授权')
         }
         else {
           /* 用户拒绝了授权后走这里 */
-          console.log('拒绝了授权 false')
+          // console.log('拒绝了授权 false')
         }
       },
     })
@@ -122,7 +122,7 @@ export function useLocation() {
         type: 'gcj02', // wgs84/gcj02 ?
         isHighAccuracy: true,
         success: (res) => {
-          console.log('我的当前位置', res)
+          // console.log('我的当前位置', res)
           myPos.latitude = res.latitude
           myPos.longitude = res.longitude
           resolve(res)

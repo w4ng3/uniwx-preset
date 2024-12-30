@@ -18,7 +18,7 @@ export default defineUniPages({
     }, {
       pagePath: 'pages/hi',
     }, {
-      pagePath: 'pages-my/my',
+      pagePath: 'pages/my',
     }],
   },
   // 或者使用默认Tabbar

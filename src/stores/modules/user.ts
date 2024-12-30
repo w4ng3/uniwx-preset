@@ -10,6 +10,7 @@ export const useUserStore = defineStore(
     /** 用户信息 */
     const userinfo = ref({
       id: 0,
+      name: '',
       phone: '',
       avatar: '',
     })
