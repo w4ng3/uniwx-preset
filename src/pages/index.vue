@@ -3,7 +3,7 @@
     "layout": "tabbar",
     "name": "home",
     "style": {
-      "navigationBarTitleText": "home"
+      "navigationBarTitleText": "首页"
     }
   }
 </route>

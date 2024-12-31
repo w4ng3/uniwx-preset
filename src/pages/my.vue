@@ -10,14 +10,12 @@
 
 <script lang="ts" setup>
 const message = useMessage()
-const router = useRouter()
 const userStore = useUserStore()
 const { setUserinfo } = userStore
 const { userinfo, getAvatar, getSecurePhone, isLogin } = storeToRefs(userStore)
 
 const handleLogout = () => {
   message.confirm('是否退出登录？').then(() => {
-    // router.replace('/pages-my/login')
     userStore.$reset()
   })
 }
@@ -74,7 +72,7 @@ onShow(async () => {
       <div class="flex items-center gap-2">
         <wd-img :width="88" :height="88" mode="aspectFill" round :src="getAvatar" custom-style="filter: grayscale(100%)" />
         <view>
-          未登录,点击登录账号
+          未登录, 点击登录账号
         </view>
       </div>
     </navigator>

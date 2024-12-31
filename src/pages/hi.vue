@@ -14,7 +14,7 @@
   "layout": "tabbar",
   "name": "hi",
   "style": {
-    "navigationBarTitleText": "hi"
+    "navigationBarTitleText": "HI"
   }
 }
 </route>

@@ -4,7 +4,7 @@ export default defineUniPages({
   pages: [],
   globalStyle: {
     navigationBarTitleText: 'Uniwx-Preset',
-    navigationStyle: 'default',
+    navigationStyle: 'custom',
     navigationBarTextStyle: 'black',
     navigationBarBackgroundColor: '#f4f4f4',
   },

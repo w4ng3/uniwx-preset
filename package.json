@@ -39,6 +39,7 @@
     "@dcloudio/uni-mp-xhs": "3.0.0-4020420240722002",
     "@dcloudio/uni-quickapp-webview": "3.0.0-4020420240722002",
     "@vueuse/core": "^11.0.3",
+    "dayjs": "^1.11.13",
     "pinia": "2.1.7",
     "pinia-plugin-unistorage": "^0.1.2",
     "vue": "~3.4.38",

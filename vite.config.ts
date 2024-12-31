@@ -13,6 +13,7 @@ import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
 export default async () => {
   const UnoCSS = (await import('unocss/vite')).default
 
+  // eslint-disable-next-line no-console
   console.log('运行环境 :', process.env.NODE_ENV)
 
   return defineConfig({
@@ -23,7 +24,7 @@ export default async () => {
       UniHelperPages({
         dts: 'src/uni-pages.d.ts',
         exclude: ['**/components/**'],
-        subPackages: ['src/pages-my'], // 是个数组，可以配置多个
+        subPackages: ['src/pages-my'],
       }),
       // https://github.com/uni-helper/vite-plugin-uni-layouts
       UniHelperLayouts(),
