@@ -8,11 +8,14 @@ export const useUserStore = defineStore(
     /** 登录凭证 */
     const token = ref('')
     /** 用户信息 */
-    const userinfo = ref({
+    const userinfo = ref<UserinfoVO>({
       id: 0,
       name: '',
       phone: '',
       avatar: '',
+      gender: 0,
+      education: 0,
+      description: '',
     })
 
     const getAvatar = computed(() => {

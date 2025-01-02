@@ -1,6 +1,10 @@
 // 主题变量清单查看此文件：
 // https://github.com/Moonofweisheng/wot-design-uni/blob/master/src/uni_modules/wot-design-uni/components/common/abstracts/variable.scss
 
+view.wd-tabbar {
+  box-sizing: content-box;
+}
+
 .wd-input {
   border-radius: 4px;
   padding: 4px 12px;

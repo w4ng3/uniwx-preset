@@ -2,6 +2,7 @@
 <script>
 import { handler } from './handler.js'
 import node from './node'
+
 export default {
   name: 'node',
   options: {
@@ -33,7 +34,6 @@ export default {
     opts: Array
   },
   components: {
-
     // #ifndef (H5 || APP-PLUS) && VUE3
     node
     // #endif
@@ -46,7 +46,7 @@ export default {
     if (this.opts[0]) {
       let i
       for (i = this.childs.length; i--;) {
-        if (this.childs[i].name === 'img') break
+        if (this.childs[i].name === 'img') {break}
       }
       if (i !== -1) {
         this.observer = uni.createIntersectionObserver(this).relativeToViewport({
@@ -63,7 +63,7 @@ export default {
     }
     // #endif
   },
-  beforeDestroy () {
+  beforeUnmount () {
     // #ifdef H5 || APP-PLUS
     if (this.observer) {
       this.observer.disconnect()
@@ -118,7 +118,7 @@ export default {
         this.linkTap(node.a)
         return
       }
-      if (node.attrs.ignore) return
+      if (node.attrs.ignore) {return}
       // #ifdef H5 || APP-PLUS
       node.attrs.src = node.attrs.src || node.attrs['data-src']
       // #endif
@@ -276,7 +276,7 @@ export default {
         }
       } else if (node.name === 'img') {
         // #ifdef H5 && VUE3
-        if (this.opts[0] && !this.ctrl.load) return
+        if (this.opts[0] && !this.ctrl.load) {return}
         // #endif
         // 显示错误占位图
         if (this.opts[2]) {

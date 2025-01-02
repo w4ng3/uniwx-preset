@@ -2,7 +2,7 @@ view,
 navigator,
 input,
 scroll-view {
-  box-sizing: border-box;
+  box-sizing: inherit;
 }
 
 scroll-view ::-webkit-scrollbar {
@@ -20,27 +20,4 @@ button::after {
 button[disabled] {
   background-color: rgba($color: #1473e2, $alpha: 1) !important;
   color: #a4a8b1 !important;
-}
-
-swiper,
-scroll-view {
-  flex: 1;
-  height: 100%;
-  overflow: hidden;
-}
-
-/* 单行省略 */
-.oneline-ellipsis {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* 双行省略 */
-.twoline-ellipsis {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }

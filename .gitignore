@@ -24,4 +24,4 @@ dist
 src/auto-imports.d.ts
 src/components.d.ts
 src/pages.json
-src/uni-pages.d.ts
+src/router/uni-pages.d.ts

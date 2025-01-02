@@ -30,6 +30,7 @@
 import node from './node/node'
 // #endif
 import Parser from './parser'
+
 const plugins=[]
 // #ifdef APP-PLUS-NVUE
 const dom = weex.requireModule('dom')
@@ -115,7 +116,7 @@ export default {
       this.setContent(this.content)
     }
   },
-  beforeDestroy () {
+  beforeUnmount () {
     this._hook('onDetached')
   },
   methods: {

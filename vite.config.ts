@@ -22,7 +22,7 @@ export default async () => {
       UniHelperManifest(),
       // https://github.com/uni-helper/vite-plugin-uni-pages
       UniHelperPages({
-        dts: 'src/uni-pages.d.ts',
+        dts: 'src/router/uni-pages.d.ts',
         exclude: ['**/components/**'],
         subPackages: ['src/pages-my'],
       }),
@@ -43,6 +43,14 @@ export default async () => {
         }, {
           from: 'wot-design-uni',
           imports: ['useMessage', 'useToast'],
+        }, {
+          from: 'wot-design-uni/components/wd-picker-view/types',
+          imports: ['ColumnItem'],
+          type: true,
+        }, {
+          from: 'wot-design-uni/components/wd-form/wd-form.vue',
+          imports: ['WdForm'],
+          type: true,
         }],
         dts: 'src/auto-imports.d.ts',
         dirs: ['src/composables', 'src/stores', 'src/utils', 'src/services/**'],

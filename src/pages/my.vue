@@ -10,6 +10,7 @@
 
 <script lang="ts" setup>
 const message = useMessage()
+const router = useRouter()
 const userStore = useUserStore()
 const { setUserinfo } = userStore
 const { userinfo, getAvatar, getSecurePhone, isLogin } = storeToRefs(userStore)
@@ -18,6 +19,10 @@ const handleLogout = () => {
   message.confirm('是否退出登录？').then(() => {
     userStore.$reset()
   })
+}
+
+const naviUserinfo = () => {
+  router.push('/pages-my/userinfo')
 }
 
 onShow(async () => {
@@ -31,7 +36,7 @@ onShow(async () => {
 <template>
   <div v-if="isLogin">
     <div class="flex gap-3 p4">
-      <wd-img :width="88" :height="88" round :src="getAvatar" />
+      <wd-img :width="88" :height="88" round :src="getAvatar" @tap="naviUserinfo" />
       <div class="flex flex-col self-end">
         <text class="truncate">
           {{ userinfo.name }}
