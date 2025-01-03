@@ -3,6 +3,6 @@ onLaunch(() => {})
 </script>
 
 <style lang="scss">
-@import '@/styles/global.scss';
-@import '@/styles/wot-theme.scss';
+@import '@/layouts/styles/global.scss';
+@import '@/layouts/styles/wot-theme.scss';
 </style>

@@ -13,6 +13,7 @@ scroll-view ::-webkit-scrollbar {
   background: transparent;
 }
 
+button,
 button::after {
   border: none !important;
 }

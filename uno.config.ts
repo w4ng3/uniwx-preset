@@ -37,6 +37,7 @@ export default defineConfig({
       'bg-base': 'bg-white dark:bg-black',
       'color-base': 'text-black dark:text-white',
       'border-base': 'border-[#8884]',
+      'content-box': 'bg-#f7f7f7! rounded-md',
       'text-base': 'text-truncate text-sm',
       'p-base': 'text-sm line-clamp-3',
     },
@@ -45,7 +46,7 @@ export default defineConfig({
   rules: [],
   theme: {
     colors: {
-      primary: '#1473E2',
+      box: '#f7f7f7',
     },
   },
 })

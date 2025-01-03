@@ -14,7 +14,8 @@
       "wot-design-uni/global"
     ],
     "noImplicitAny": false,
-    "sourceMap": true
+    "sourceMap": true,
+    "skipLibCheck": false // Skip type checking all .d.ts files.
   },
   "vueCompilerOptions": {
     // 调整 Volar（Vue 语言服务工具）解析行为，用于为 uni-app 组件提供 TypeScript 类型

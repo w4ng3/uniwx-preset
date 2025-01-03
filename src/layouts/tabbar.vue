@@ -7,6 +7,7 @@ const router = useRouter()
 const route = useRoute()
 
 const themeVars = reactive<ConfigProviderThemeVars>({
+  // colorTheme: '#FF5454',
 })
 
 const { activeTabbar, getTabbarItemValue, setTabbarItemActive, tabbarList } = useTabbar()
@@ -44,8 +45,8 @@ export default {
 <template>
   <wd-config-provider :theme-vars="themeVars" custom-class="min-h-screen">
     <wd-navbar
-      v-if="$Route.style.navigationStyle !== 'custom'"
-      :title="$Route.style.navigationBarTitleText"
+      v-if="$Route.style?.navigationStyle !== 'custom'"
+      :title="$Route.style?.navigationBarTitleText"
       safe-area-inset-top placeholder fixed :bordered="false"
     />
     <slot />

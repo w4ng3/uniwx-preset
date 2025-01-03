@@ -1,4 +1,4 @@
 declare namespace enums {
-  /** 任务发布状态 */
-  export type EnumTaskPublishStatus = import('@/services/enums/index').EnumTaskPublishStatus
+  /** 富文本类型 */
+  export type TextEnum = import('@/services/enums/index').TextEnum
 }

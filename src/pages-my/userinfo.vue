@@ -9,6 +9,7 @@
 </route>
 
 <script lang="ts" setup>
+import type { ButtonOnChooseavatarEvent } from '@uni-helper/uni-types'
 import { putUserinfo } from '@/services/apis'
 
 const toast = useToast()
@@ -36,49 +37,77 @@ const education_columns: ColumnItem[] = [
   { label: '研究生', value: 4 },
   { label: '博士', value: 5 },
 ]
+
+// 修改头像
+const onAvatarChange = (e: ButtonOnChooseavatarEvent) => {
+  // 获取到微信头像临时地址
+  const { avatarUrl } = e.detail
+  console.log('avatarUrl :>> ', avatarUrl)
+  // TODO: 自定义图片上传方法
+  // uni.hideLoading()
+  // const avatar = resp.data.link
+  // model.avatar = avatar
+  // userinfo.avatar = avatar
+  // console.log('上传成功 :>> ', avatar)
+}
 </script>
 
 <template>
-  <div class="p3">
-    <div class="mb-8 rounded-md bg-white p2">
-      <div class="pb-2 text-lg font-bold">
+  <div class="p2">
+    <div class="rounded-md p2 bg-base">
+      <div class="pb2 text-lg font-bold">
         我的信息
       </div>
+      <!-- tips: 只在微信小程序有效 -->
+      <button class="flex flex-col items-center justify-center" :plain="true" open-type="chooseAvatar" @chooseavatar="onAvatarChange">
+        <view v-if="!userinfo?.avatar" class="size-20">
+          <wd-icon size="40px" color="#5dcaab" name="fill-camera" />
+        </view>
+        <image v-else class="size-20 rounded-lg" :src="userinfo?.avatar" mode="aspectFill" />
+        <text class="text-sm">
+          点击修改头像
+        </text>
+      </button>
+      <wd-gap />
       <wd-form ref="form" :model="model">
-        <div class="text-info p1 font-bold">
-          学历
-        </div>
-        <wd-picker v-model="model.education" :columns="education_columns" />
-        <div class="text-info p1 font-bold">
-          性别
-        </div>
-        <wd-radio-group v-model="model.gender" cell shape="dot" inline>
-          <wd-radio :value="0">
-            男
-          </wd-radio>
-          <wd-radio :value="1">
-            女
-          </wd-radio>
-        </wd-radio-group>
-        <div class="text-info p1 font-bold">
-          参加过的志愿活动描述
-        </div>
+        <wd-input
+          v-model="model.name"
+          prop="name"
+          label="昵称:"
+          custom-class="content-box"
+          no-border
+          placeholder="请输入昵称"
+        />
+        <wd-gap />
+        <wd-picker v-model="model.education" label="学历:" custom-label-class="" :columns="education_columns" />
+        <wd-gap />
+        <wd-cell title="性别:" custom-class="content-box font-bold">
+          <wd-radio-group v-model="model.gender" cell shape="dot" inline>
+            <wd-radio :value="0">
+              男
+            </wd-radio>
+            <wd-radio :value="1">
+              女
+            </wd-radio>
+          </wd-radio-group>
+        </wd-cell>
+        <wd-gap />
         <wd-textarea
           v-model="model.description"
-          :maxlength="200"
+          label="描述:"
           prop="description"
-          placeholder="请输入..."
-          custom-class="bg-#f7f7f7! rounded-md p2! min-h-20"
           :show-confirm-bar="false"
-          auto-height
-          show-word-limit
           :no-border="true"
-          custom-textarea-container-class="bg-#f7f7f7!"
+          :maxlength="200"
+          show-word-limit
+          auto-height
+          placeholder="请输入..."
+          custom-class="rounded-md px2!"
         />
       </wd-form>
     </div>
 
-    <wd-button block type="primary" size="large" custom-class="mb-10" @click="handleSubmit">
+    <wd-button block type="primary" size="large" custom-class="my-10" @click="handleSubmit">
       保存
     </wd-button>
   </div>
