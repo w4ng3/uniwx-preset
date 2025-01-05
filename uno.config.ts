@@ -40,6 +40,7 @@ export default defineConfig({
       'content-box': 'bg-#f7f7f7! rounded-md',
       'text-base': 'text-truncate text-sm',
       'p-base': 'text-sm line-clamp-3',
+      'border-bottom': 'border-b border-#dadfe5 border-b-solid',
     },
     [/^btn-(\w+)$/, ([_, color]) => `op50 px2.5 py1 transition-all duration-200 ease-out no-underline! hover:(op100 text-${color} bg-${color}/10) border border-base! rounded`],
   ],

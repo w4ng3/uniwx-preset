@@ -8,6 +8,13 @@ export const postUserLogin = () => {
   })
 }
 
+export const postUserLogout = () => {
+  return Promise.resolve({
+    code: 0,
+    msg: 'success',
+  })
+}
+
 export const getUserinfo = () => {
   return Promise.resolve({
     code: 0,

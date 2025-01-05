@@ -49,7 +49,7 @@ export default async () => {
           type: true,
         }, {
           from: 'wot-design-uni/components/wd-form/wd-form.vue',
-          imports: ['WdForm'],
+          imports: ['WdForm', 'FormItemRule'],
           type: true,
         }],
         dts: 'src/auto-imports.d.ts',

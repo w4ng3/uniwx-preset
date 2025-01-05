@@ -9,17 +9,10 @@
 </route>
 
 <script lang="ts" setup>
-const message = useMessage()
 const router = useRouter()
 const userStore = useUserStore()
 const { setUserinfo } = userStore
 const { userinfo, getAvatar, getSecurePhone, isLogin } = storeToRefs(userStore)
-
-const handleLogout = () => {
-  message.confirm('是否退出登录？').then(() => {
-    userStore.$reset()
-  })
-}
 
 const naviUserinfo = () => {
   router.push('/pages-my/userinfo')
@@ -35,7 +28,7 @@ onShow(async () => {
 
 <template>
   <div v-if="isLogin">
-    <div class="flex gap-3 p4">
+    <div class="mb2 flex gap-3 border-bottom p4">
       <wd-img :width="88" :height="88" round :src="getAvatar" @tap="naviUserinfo" />
       <div class="flex flex-col self-end">
         <text class="truncate">
@@ -57,13 +50,10 @@ onShow(async () => {
         size="large"
         title="意见反馈"
         is-link
+        to="/pages-my/feedback"
         icon="https://api.iconify.design/carbon:thumbs-up-double-filled.svg"
       />
     </wd-cell-group>
-
-    <wd-button block type="primary" size="large" custom-class="mt-10 mx-3" @click="handleLogout">
-      退出登录
-    </wd-button>
   </div>
   <div v-else class="p4">
     <navigator url="/pages-my/login" hover-class="none">
