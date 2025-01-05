@@ -32,3 +32,15 @@ export const putUserinfo = (data: UserinfoVO) => {
     data,
   })
 }
+
+
+export const getRichText = (data: { type: number }) => {
+  return Promise.resolve({
+    code: 0,
+    msg: 'success',
+    data: `<div>
+            <p>${data.type}- ...</p>
+            <img src="https://avatars.githubusercontent.com/u/87717361?v=4"></img>
+           </div>`,
+  })
+}

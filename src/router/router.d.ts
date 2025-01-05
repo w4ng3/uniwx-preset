@@ -38,12 +38,16 @@ interface RouterWithUrl extends Router {
 
 interface RouteWithPage extends Route {
   style: Readonly<GlobalStyle>
-  layout: string
+  layout: 'default' | 'tabbar'
   type: string
 }
 
 declare module 'uni-mini-router' {
   function useRouter(): RouterWithUrl
+  /**
+   * useRoute 只能在页面mount之后才可使用，且默认不对query的中文解码，
+   * 页面刷新的场景下建议从 onLoad 生命周期获取参数。
+   */
   function useRoute(): RouteWithPage
 }
 

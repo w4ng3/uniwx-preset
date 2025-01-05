@@ -19,10 +19,6 @@ const themeVars = reactive<ConfigProviderThemeVars>({
   sizeSidePadding: '8px',
   inputCellLabelWidth: '50px',
 })
-
-function handleClickLeft() {
-  uni.navigateBack()
-}
 </script>
 
 <script lang="ts">
@@ -41,7 +37,7 @@ export default {
       v-if="$Route.style?.navigationStyle !== 'custom'"
       :title="$Route.style?.navigationBarTitleText"
       :bordered="false" safe-area-inset-top placeholder left-arrow fixed
-      @click-left="handleClickLeft"
+      @click-left="$Router.back"
     />
     <slot />
     <wd-toast />

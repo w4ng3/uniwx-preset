@@ -45,7 +45,7 @@ export default {
 <template>
   <wd-config-provider :theme-vars="themeVars" custom-class="min-h-screen">
     <wd-navbar
-      v-if="$Route.style?.navigationStyle !== 'custom'"
+      v-if="$Route.style?.navigationStyle !== 'custom' && $Route.layout === 'tabbar'"
       :title="$Route.style?.navigationBarTitleText"
       safe-area-inset-top placeholder fixed :bordered="false"
     />

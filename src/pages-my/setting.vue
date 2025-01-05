@@ -11,43 +11,37 @@
 <script lang="ts" setup>
 import { TextEnum } from '@/services/enums'
 
+const message = useMessage()
+const router = useRouter()
 const userStore = useUserStore()
 const { getSecurePhone } = storeToRefs(userStore)
 
-// 退出登录
-const onLogout = () => {
-  // 模态弹窗
-  uni.showModal({
-    content: '是否退出登录？',
-    success: (res) => {
-      if (res.confirm) {
-        // UserApi.logout()
-        // 清理用户信息
-        userStore.$reset()
-        uni.redirectTo({ url: '/pages/login/login' })
-      }
-    },
+const handleLogout = () => {
+  message.confirm('是否退出登录？').then(() => {
+    userStore.$reset()
+    router.pushTab('/pages/my')
   })
 }
 
 const openWxSetting = () => {
+  // #ifdef MP-WEIXIN
   uni.openSetting()
+  // #endif
 }
 </script>
 
 <template>
-  <view class="px-20 px-30 py-20">
-    <view class="m-linear-box">
-      <!-- <wd-cell size="large" title="修改密码" is-link to="/pagesMember/settings/password" /> -->
+  <view class="p2">
+    <wd-cell-group border custom-class="mb-4 overflow-hidden rounded-xl">
       <wd-cell
         size="large"
         title="手机号"
         is-link
+        to="/pages-my/change-phone"
         :value="getSecurePhone"
       />
-      <div class="h-10" />
+      <wd-cell size="large" title="修改密码" is-link to="/pages-my/change-password" />
       <wd-cell size="large" title="权限设置" is-link @click="openWxSetting" />
-      <div class="h-10" />
       <wd-cell
         size="large"
         title="隐私协议"
@@ -60,12 +54,9 @@ const openWxSetting = () => {
         is-link
         :to="`/pages-my/about?type=${TextEnum.About}&title=关于我们`"
       />
-    </view>
-    <!-- 操作按钮 -->
-    <view class="px-30 pt-40">
-      <wd-button type="error" block size="large" @click="onLogout">
-        退出登录
-      </wd-button>
-    </view>
+    </wd-cell-group>
+    <wd-button type="error" block size="large" custom-class="my-10" @click="handleLogout">
+      退出登录
+    </wd-button>
   </view>
 </template>

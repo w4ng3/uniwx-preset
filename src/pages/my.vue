@@ -59,13 +59,6 @@ onShow(async () => {
         is-link
         icon="https://api.iconify.design/carbon:thumbs-up-double-filled.svg"
       />
-      <wd-cell
-        size="large"
-        title="关于我们"
-        is-link
-        icon="https://api.iconify.design/carbon:user-profile.svg?color=%233578e8"
-        to="/pages-my/about"
-      />
     </wd-cell-group>
 
     <wd-button block type="primary" size="large" custom-class="mt-10 mx-3" @click="handleLogout">
