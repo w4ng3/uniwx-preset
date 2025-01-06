@@ -14,4 +14,6 @@ interface ImportMetaEnv {
   VITE_BASE_API: string
   /** 请求超时时长 */
   VITE_REQUEST_TIMEOUT: number
+  /** 文件上传api */
+  VITE_UPLOAD_API: string
 }

@@ -60,10 +60,10 @@ onShow(async () => {
       <div class="flex items-center gap-2">
         <wd-img :width="88" :height="88" mode="aspectFill" round :src="getAvatar" custom-style="filter: grayscale(100%)" />
         <view>
-          未登录, 点击登录账号
+          未登录
         </view>
       </div>
+      <wd-status-tip image="content" tip="点击登录账号" />
     </navigator>
-    <wd-status-tip image="content" tip="" custom-class="mb-100" />
   </div>
 </template>

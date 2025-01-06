@@ -1,23 +1,5 @@
+import { ApiCodeEnum } from '../enums'
 import { useUserStore } from '@/stores'
-/** 返回参数类型 */
-interface Data<T> {
-  code: ApiCodeEnum
-  msg: string
-  data: T
-}
-
-enum ApiCodeEnum {
-  /** 请求成功 */
-  SUCCESS = 0,
-  /** 服务异常 */
-  FAIL = 1,
-  /** 登录失效，请重新登录 */
-  UNAUTHORIZEDC = 401,
-  /** 没有权限，禁止访问 */
-  FORBIDDEN = 403,
-  /** 服务器异常，请稍后再试 */
-  INTERNAL_SERVER_ERROR = 500,
-}
 
 // 请求基地址
 const baseURL = `${import.meta.env.VITE_HTTP_URL}${import.meta.env.VITE_BASE_API}`

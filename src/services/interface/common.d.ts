@@ -1,3 +1,10 @@
+/** 返回参数类型 */
+interface Data<T> {
+  code: enums.ApiCodeEnum
+  msg: string
+  data: T
+}
+
 /** 分页参数 */
 interface IPage {
   asc?: boolean

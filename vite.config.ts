@@ -53,7 +53,7 @@ export default async () => {
           type: true,
         }],
         dts: 'src/auto-imports.d.ts',
-        dirs: ['src/composables', 'src/stores', 'src/utils', 'src/services/**'],
+        dirs: ['src/composables', 'src/stores', 'src/services/**'],
         vueTemplate: true,
       }),
       // https://github.com/antfu/unocss

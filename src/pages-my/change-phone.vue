@@ -69,8 +69,9 @@ const handleSubmit = () => {
   <view class="p2">
     <div class="rounded-md px2 pb4 bg-base">
       <wd-form ref="form" :model="model">
-        <wd-input v-model="getSecurePhone" label="已绑定手机号" readonly label-width="90px" />
-        <wd-gap />
+        <view class="p2">
+          已绑定手机号: {{ getSecurePhone }}
+        </view>
         <wd-input
           v-model="model.newPhone"
           prop="newPhone"

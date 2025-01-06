@@ -9,15 +9,19 @@
 </route>
 
 <script lang="ts" setup>
-import type { ButtonOnChooseavatarEvent } from '@uni-helper/uni-types'
+import type { UploadChangeEvent, UploadFileItem } from 'wot-design-uni/components/wd-upload/types'
 import { putUserinfo } from '@/services/apis'
+import { ApiCodeEnum } from '@/services/enums'
+import { UPLOAD_URL } from '@/services/constant'
+
+import type { ColPickerConfirm } from '@/composables/useColPickerAreaData'
 
 const toast = useToast()
 const userStore = useUserStore()
 const { userinfo } = storeToRefs(userStore)
+
 const model = reactive<UserinfoVO>(userinfo.value)
 const form = ref<InstanceType<typeof WdForm>>()
-
 function handleSubmit() {
   form.value?.validate().then(({ valid }) => {
     if (valid) {
@@ -38,17 +42,30 @@ const education_columns: ColumnItem[] = [
   { label: '博士', value: 5 },
 ]
 
-// 修改头像
-const onAvatarChange = (e: ButtonOnChooseavatarEvent) => {
-  // 获取到微信头像临时地址
-  const { avatarUrl } = e.detail
-  console.log('avatarUrl :>> ', avatarUrl)
-  // TODO: 自定义图片上传方法
-  // uni.hideLoading()
-  // const avatar = resp.data.link
-  // model.avatar = avatar
-  // userinfo.avatar = avatar
-  // console.log('上传成功 :>> ', avatar)
+// 图片上传
+// 如果要改成直传OSS,参考这里：https://wot-design-uni.cn/component/upload.html#上传至云存储
+// 或者：https://wot-design-uni.cn/component/upload.html#自定义上传方法
+const fileList = ref<UploadFileItem[]>([{ url: `${model.avatar}.png`, uid: 0 }])
+function handleUploadChange({ fileList: files }: UploadChangeEvent) {
+  fileList.value = files.map((item) => {
+    const resp: Data<any> = JSON.parse(item.response as string)
+    if (resp.code !== ApiCodeEnum.SUCCESS) {
+      item.status = 'fail'
+    }
+    else {
+      model.avatar = resp.data.url
+    }
+    item.response = resp
+    return item
+  })
+}
+
+// 地区选择
+const { colPickerData, columnChange } = useColPickerAreaData()
+const area = ref<string[]>(['110000', '110100', '110101'])
+const handleConfirm: ColPickerConfirm = ({ value, selectedItems }) => {
+  console.log('value', value)
+  console.log('selectedItems', selectedItems)
 }
 </script>
 
@@ -58,21 +75,25 @@ const onAvatarChange = (e: ButtonOnChooseavatarEvent) => {
       <div class="pb2 text-lg font-bold">
         我的信息
       </div>
-      <!-- tips: 只在微信小程序有效 -->
-      <button class="flex flex-col items-center justify-center" :plain="true" open-type="chooseAvatar" @chooseavatar="onAvatarChange">
-        <view v-if="!userinfo?.avatar" class="size-20">
-          <wd-icon size="40px" color="#5dcaab" name="fill-camera" />
-        </view>
-        <image v-else class="size-20 rounded-lg" :src="userinfo?.avatar" mode="aspectFill" />
-        <text class="text-sm">
-          点击修改头像
-        </text>
-      </button>
+      <view class="flex justify-center">
+        <wd-upload
+          :show-limit-num="false"
+          :limit="1"
+          :file-list="fileList"
+          :action="UPLOAD_URL"
+          image-mode="aspectFill"
+          custom-preview-class="m0! rounded-xl overflow-hidden size-26!"
+          custom-evoke-class="rounded-xl size-26!"
+          reupload
+          @change="handleUploadChange"
+        />
+      </view>
       <wd-gap />
       <wd-form ref="form" :model="model">
         <wd-input
           v-model="model.name"
           prop="name"
+          :maxlength="10"
           label="昵称:"
           custom-class="content-box"
           no-border
@@ -80,6 +101,15 @@ const onAvatarChange = (e: ButtonOnChooseavatarEvent) => {
         />
         <wd-gap />
         <wd-picker v-model="model.education" label="学历:" custom-label-class="" :columns="education_columns" />
+        <wd-gap />
+        <wd-col-picker
+          v-model="area"
+          label="选择地址:"
+          auto-complete
+          :columns="colPickerData"
+          :column-change="columnChange"
+          @confirm="handleConfirm"
+        />
         <wd-gap />
         <wd-cell title="性别:" custom-class="content-box font-bold">
           <wd-radio-group v-model="model.gender" cell shape="dot" inline>
@@ -112,3 +142,9 @@ const onAvatarChange = (e: ButtonOnChooseavatarEvent) => {
     </wd-button>
   </div>
 </template>
+
+<style scoped>
+:deep(.wd-upload__close) {
+  display: none !important;
+}
+</style>

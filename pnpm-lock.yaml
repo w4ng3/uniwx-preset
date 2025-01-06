@@ -50,6 +50,9 @@ importers:
       '@dcloudio/uni-quickapp-webview':
         specifier: 3.0.0-4020420240722002
         version: 3.0.0-4020420240722002(@vueuse/core@11.0.3(vue@3.4.38(typescript@5.5.4)))(postcss@8.4.41)(rollup@4.21.1)(vue@3.4.38(typescript@5.5.4))
+      '@vant/area-data':
+        specifier: ^2.0.0
+        version: 2.0.0
       '@vueuse/core':
         specifier: ^11.0.3
         version: 11.0.3(vue@3.4.38(typescript@5.5.4))
@@ -2394,6 +2397,9 @@ packages:
     resolution: {integrity: sha512-RrqF6Go8s0BGpwRfkOiLuO+n3CUE/CXxGqb0ipbUARhmNWJlekE3YPfayqImSEnCcImpaPgtVGv6Y0u3kLGG/w==}
     peerDependencies:
       vite: ^2.9.0 || ^3.0.0-0 || ^4.0.0 || ^5.0.0-0
+
+  '@vant/area-data@2.0.0':
+    resolution: {integrity: sha512-zgP4AA8z09S9QTNgVCCHo9cHjcybrv22RJDYPjuCkecn4SB98T5EoPQh2TwqbQXmUhbaOGgiZGy3OUaUxnY7qg==}
 
   '@vitejs/plugin-legacy@5.4.2':
     resolution: {integrity: sha512-hlyyQL+wEIyOWdwsUKX+0g3kBU4AbHmVzHarLvVKiGGGqLIYjttMvvjk6zGY8RD9dab6QuFNhDoxg0YFhQ26xA==}
@@ -9499,6 +9505,8 @@ snapshots:
     transitivePeerDependencies:
       - rollup
       - supports-color
+
+  '@vant/area-data@2.0.0': {}
 
   '@vitejs/plugin-legacy@5.4.2(terser@5.31.6)(vite@5.4.2(@types/node@20.16.2)(sass@1.78.0)(terser@5.31.6))':
     dependencies:

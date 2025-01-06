@@ -38,6 +38,7 @@
     "@dcloudio/uni-mp-weixin": "3.0.0-4020420240722002",
     "@dcloudio/uni-mp-xhs": "3.0.0-4020420240722002",
     "@dcloudio/uni-quickapp-webview": "3.0.0-4020420240722002",
+    "@vant/area-data": "^2.0.0",
     "@vueuse/core": "^11.0.3",
     "dayjs": "^1.11.13",
     "pinia": "2.1.7",
@@ -92,7 +93,7 @@
     "peerDependencyRules": {
       "allowedVersions": {
         "@antfu/eslint-config": ">=2.25.0",
-        "Vue": ">=3.4.21"
+        "Vue": ">=3.4.38"
       }
     }
   },
