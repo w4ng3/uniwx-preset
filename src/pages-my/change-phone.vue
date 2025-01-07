@@ -79,7 +79,6 @@ const handleSubmit = () => {
           :maxlength="11"
           no-border
           placeholder="请输入新手机号"
-          custom-class="content-box p1"
           :rules="phoneRule"
           prefix-icon="mobile"
         />
@@ -94,7 +93,6 @@ const handleSubmit = () => {
             placeholder="请输入验证码"
             :rules="codeRule"
             prefix-icon="secured"
-            custom-class="content-box p1"
           />
           <wd-button
             :round="false"

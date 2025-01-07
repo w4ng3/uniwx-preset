@@ -13,14 +13,12 @@ import type { UploadChangeEvent, UploadFileItem } from 'wot-design-uni/component
 import { putUserinfo } from '@/services/apis'
 import { ApiCodeEnum } from '@/services/enums'
 import { UPLOAD_URL } from '@/services/constant'
-
 import type { ColPickerConfirm } from '@/composables/useColPickerAreaData'
 
 const toast = useToast()
 const userStore = useUserStore()
-const { userinfo } = storeToRefs(userStore)
 
-const model = reactive<UserinfoVO>(userinfo.value)
+const model = reactive<UserinfoVO>({ ...userStore.userinfo })
 const form = ref<InstanceType<typeof WdForm>>()
 function handleSubmit() {
   form.value?.validate().then(({ valid }) => {
@@ -62,7 +60,6 @@ function handleUploadChange({ fileList: files }: UploadChangeEvent) {
 
 // 地区选择
 const { colPickerData, columnChange } = useColPickerAreaData()
-const area = ref<string[]>(['110000', '110100', '110101'])
 const handleConfirm: ColPickerConfirm = ({ value, selectedItems }) => {
   console.log('value', value)
   console.log('selectedItems', selectedItems)
@@ -95,7 +92,6 @@ const handleConfirm: ColPickerConfirm = ({ value, selectedItems }) => {
           prop="name"
           :maxlength="10"
           label="昵称:"
-          custom-class="content-box"
           no-border
           placeholder="请输入昵称"
         />
@@ -103,15 +99,16 @@ const handleConfirm: ColPickerConfirm = ({ value, selectedItems }) => {
         <wd-picker v-model="model.education" label="学历:" custom-label-class="" :columns="education_columns" />
         <wd-gap />
         <wd-col-picker
-          v-model="area"
+          v-model="model.area"
           label="选择地址:"
+          custom-label-class="font-bold"
           auto-complete
           :columns="colPickerData"
           :column-change="columnChange"
           @confirm="handleConfirm"
         />
         <wd-gap />
-        <wd-cell title="性别:" custom-class="content-box font-bold">
+        <wd-cell title="性别:" custom-class="bg-#f7f7f7! rounded-md font-bold">
           <wd-radio-group v-model="model.gender" cell shape="dot" inline>
             <wd-radio :value="0">
               男

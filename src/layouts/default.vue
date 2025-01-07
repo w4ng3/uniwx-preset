@@ -9,6 +9,7 @@ const themeVars = reactive<ConfigProviderThemeVars>({
   navbarColor: '#000',
   textareaBg: '#f7f7f7',
   inputBg: '#F7F7F7',
+  inputCellBg: '#F7F7F7',
   inputIconSize: '26px',
   searchIconColor: '#7c7c7c',
   searchPlaceholderColor: '#7c7c7c',
@@ -36,7 +37,7 @@ export default {
     <wd-navbar
       v-if="$Route.style?.navigationStyle !== 'custom'"
       :title="$Route.style?.navigationBarTitleText"
-      :bordered="false" safe-area-inset-top placeholder left-arrow fixed
+      :bordered="false" safe-area-inset-top left-arrow placeholder fixed
       @click-left="$Router.back"
     />
     <slot />

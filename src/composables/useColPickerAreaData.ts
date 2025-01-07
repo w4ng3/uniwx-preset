@@ -52,7 +52,7 @@ export function useColPickerAreaData() {
   })]
 
   const columnChange: ColPickerColumnChange = async ({ selectedItem, resolve, finish }) => {
-    await sleep(0.3)
+    await sleep(0.2)
 
     const areaData = findChildrenByCode(cascaderAreaData, selectedItem.value)
     if (areaData && areaData.length) {

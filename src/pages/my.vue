@@ -11,7 +11,6 @@
 <script lang="ts" setup>
 const router = useRouter()
 const userStore = useUserStore()
-const { setUserinfo } = userStore
 const { userinfo, getAvatar, getSecurePhone, isLogin } = storeToRefs(userStore)
 
 const naviUserinfo = () => {
@@ -19,10 +18,8 @@ const naviUserinfo = () => {
 }
 
 onShow(async () => {
-  if (isLogin.value) {
-    const { data } = await getUserinfo()
-    setUserinfo(data)
-  }
+  const { data: user } = await getUserinfo()
+  userStore.setUserinfo(user)
 })
 </script>
 

@@ -1,21 +1,20 @@
 /**
  * @description 重写 uni-mini-router 的部分类型(与vite-plugin-uni-pages的结合)，获得更友好的提示
  */
-
-import type { Route, RouteLocationBase, Router } from 'uni-mini-router'
+import type { Route, Router } from 'uni-mini-router'
 import type { GlobalStyle } from '@uni-helper/vite-plugin-uni-pages'
 
 type NavigateToTab = SwitchTabOptions['url']
 type NavigateToPage = Exclude<NavigateToOptions['url'], SwitchTabOptions['url']>
 
-interface RouteNameLocation extends RouteLocationBase {
+interface RouteNameLocation {
   name: string
   params?: Record<string, string>
   path?: never
   query?: never
 }
 
-interface RoutePathLocationWithURl<T> extends RouteLocationBase {
+interface RoutePathLocationWithURl<T> {
   path: T
   query?: Record<string, string>
   name?: never

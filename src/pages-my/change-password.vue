@@ -68,7 +68,6 @@ const handleSubmit = () => {
           no-border
           show-password
           placeholder="请输入旧密码"
-          custom-class="content-box p1"
           prefix-icon="lock-on"
           clearable
         />
@@ -82,7 +81,6 @@ const handleSubmit = () => {
           clearable
           placeholder="请输入密码"
           prefix-icon="lock-on"
-          custom-class="content-box p1"
         />
         <wd-gap />
         <wd-input
@@ -94,7 +92,6 @@ const handleSubmit = () => {
           clearable
           placeholder="请再次输入密码"
           prefix-icon="lock-on"
-          custom-class="content-box p1"
         />
       </wd-form>
     </div>

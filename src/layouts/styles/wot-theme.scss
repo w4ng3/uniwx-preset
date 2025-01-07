@@ -15,12 +15,13 @@ view.wd-tabbar {
   font-weight: bold;
 }
 
-// .wd-input {
-//   border-radius: 6px;
-//   .wd-input__placeholder {
-//     color: #7f7f7f;
-//   }
-// }
+.wd-input {
+  border-radius: 6px;
+  padding: 4px;
+  // .wd-input__placeholder {
+  // color: #7f7f7f !important;
+  // }
+}
 
 // :deep(.wd-search) {
 //   --wot-search-input-height: 35px;

@@ -1,6 +1,8 @@
 /// <reference types="@uni-helper/vite-plugin-uni-pages/client" />
 import { pages, subPackages } from 'virtual:uni-pages'
 
+// https://moonofweisheng.github.io/uni-mini-router/guide/usage.html
+
 function generateRoutes() {
   const routes = pages.map((page) => {
     const newPath = `/${page.path}`
@@ -31,6 +33,8 @@ router.beforeEach((to, from, next) => {
     next()
   }
   else {
+    // next入参 false 以取消导航
+    next(false)
     uni.showToast({ title: '请登录后查看', icon: 'none' })
   }
 })

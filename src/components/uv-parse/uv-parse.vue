@@ -89,7 +89,12 @@ export default {
       type: [Boolean, String],
       default: true
     },
-    tagStyle: Object,
+    tagStyle: {
+      type: Object,
+      default: {
+        img: 'border-radius: 20rpx;width: 100%;margin-top: 10rpx;display: block;',
+      }
+    },
     useAnchor: [Boolean, Number]
   },
   // #ifdef VUE3

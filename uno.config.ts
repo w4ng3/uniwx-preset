@@ -37,7 +37,6 @@ export default defineConfig({
       'bg-base': 'bg-white dark:bg-black',
       'color-base': 'text-black dark:text-white',
       'border-base': 'border-[#8884]',
-      'content-box': 'bg-#f7f7f7! rounded-md',
       'text-base': 'text-truncate text-sm',
       'p-base': 'text-sm line-clamp-3',
       'border-bottom': 'border-b border-#dadfe5 border-b-solid',
