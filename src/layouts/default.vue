@@ -2,19 +2,8 @@
 import type { ConfigProviderThemeVars } from 'wot-design-uni'
 
 const themeVars = reactive<ConfigProviderThemeVars>({
-  // colorTheme: '#FF5454',
-  // colorSuccess: '',
-  // ...
-  tabsNavLineBgColor: 'red',
   navbarColor: '#000',
-  textareaBg: '#f7f7f7',
-  inputBg: '#F7F7F7',
-  inputCellBg: '#F7F7F7',
   inputIconSize: '26px',
-  searchIconColor: '#7c7c7c',
-  searchPlaceholderColor: '#7c7c7c',
-  inputDisabledColor: '#5b5b5b',
-  pickerColumnDisabledColor: '#5b5b5b',
   messageBoxContentMaxHeight: '80vh',
   cellWrapperPadding: '8px',
   sizeSidePadding: '8px',

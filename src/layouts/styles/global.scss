@@ -17,8 +17,3 @@ button,
 button::after {
   border: none !important;
 }
-
-button[disabled] {
-  background-color: rgba($color: #1473e2, $alpha: 1) !important;
-  color: #a4a8b1 !important;
-}

@@ -1,9 +1,26 @@
 // 主题变量清单查看此文件：
 // https://github.com/Moonofweisheng/wot-design-uni/blob/master/src/uni_modules/wot-design-uni/components/common/abstracts/variable.scss
+:root,
+page {
+  --wot-color-theme: #69a794;
+  --wot-color-danger: #ec2d7a;
+  --wot-input-bg: #f7f7f7;
+  --wot-input-cell-bg: #f7f7f7;
+  --wot-textarea-bg: #f7f7f7;
+  --wot-search-placeholder-color: #7c7c7c;
+  --wot-input-disabled-color: #5b5b5b;
+  --wot-picker-column-disabled-color: #5b5b5b;
+}
 
 view.wd-tabbar {
   box-sizing: content-box;
 }
+
+.wd-input {
+  border-radius: 6px;
+  padding: 4px;
+}
+
 // $匹配末尾，^匹配开头，*匹配全部
 [class$='-group'],
 [class*='picker__cell'] {
@@ -14,15 +31,3 @@ view.wd-tabbar {
 [class$='__label'] {
   font-weight: bold;
 }
-
-.wd-input {
-  border-radius: 6px;
-  padding: 4px;
-  // .wd-input__placeholder {
-  // color: #7f7f7f !important;
-  // }
-}
-
-// :deep(.wd-search) {
-//   --wot-search-input-height: 35px;
-// }

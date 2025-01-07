@@ -53,7 +53,7 @@ function handleSubmit() {
       </wd-form>
     </div>
 
-    <wd-button block size="large" @click="handleSubmit">
+    <wd-button type="primary" block size="large" @click="handleSubmit">
       提交反馈
     </wd-button>
   </div>
