@@ -9,6 +9,8 @@
 </route>
 
 <script lang="ts" setup>
+import { useTheme } from '@/layouts/styles/useTheme'
+
 const router = useRouter()
 const userStore = useUserStore()
 const { userinfo, getAvatar, getSecurePhone, isLogin } = storeToRefs(userStore)
@@ -21,6 +23,8 @@ onShow(async () => {
   const { data: user } = await getUserinfo()
   userStore.setUserinfo(user)
 })
+
+const { toggleDark } = useTheme()
 </script>
 
 <template>
@@ -33,8 +37,11 @@ onShow(async () => {
         </text>
         <text>{{ getSecurePhone }}</text>
       </div>
+      <view class="ml-a" @click="toggleDark()">
+        <div class="i-carbon-sun dark:i-carbon-moon scale-160" />
+      </view>
       <navigator
-        class="ml-a"
+        class="ml-3"
         url="/pages-my/setting"
         open-type="navigate"
         hover-class="none"

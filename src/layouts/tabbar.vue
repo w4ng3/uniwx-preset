@@ -1,14 +1,12 @@
 <script lang="ts" setup>
-import type { ConfigProviderThemeVars } from 'wot-design-uni'
+import { useTheme } from './styles/useTheme'
 import { useTabbar } from '@/composables/useTabbar'
 
 const router = useRouter()
 
 const route = useRoute()
 
-const themeVars = reactive<ConfigProviderThemeVars>({
-  // colorTheme: '#FF5454',
-})
+const { theme, themeVars } = useTheme()
 
 const { activeTabbar, getTabbarItemValue, setTabbarItemActive, tabbarList } = useTabbar()
 
@@ -43,7 +41,7 @@ export default {
 </script>
 
 <template>
-  <wd-config-provider :theme-vars="themeVars" custom-class="min-h-screen">
+  <wd-config-provider :theme="theme" :theme-vars="themeVars" custom-class="min-h-screen">
     <wd-navbar
       :title="$Route.style?.navigationBarTitleText"
       safe-area-inset-top placeholder fixed :bordered="false"

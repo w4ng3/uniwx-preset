@@ -34,7 +34,7 @@ export default defineConfig({
   ],
   shortcuts: [
     {
-      'bg-base': 'bg-white dark:bg-black',
+      'bg-base': 'bg-white dark:bg-#121212',
       'color-base': 'text-black dark:text-white',
       'border-base': 'border-[#8884]',
       'text-base': 'text-truncate text-sm',

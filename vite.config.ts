@@ -8,6 +8,7 @@ import UniHelperLayouts from '@uni-helper/vite-plugin-uni-layouts'
 import UniHelperComponents from '@uni-helper/vite-plugin-uni-components'
 import AutoImport from 'unplugin-auto-import/vite'
 import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
+import { uniPolyfill } from './uni-polyfill'
 
 // https://vitejs.dev/config/
 export default async () => {
@@ -59,6 +60,7 @@ export default async () => {
       // https://github.com/antfu/unocss
       // see unocss.config.ts for config
       UnoCSS(),
+      uniPolyfill(),
     ],
     resolve: {
       alias: [

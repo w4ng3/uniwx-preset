@@ -3,8 +3,8 @@
 
 <template>
   <view class="px-3 py-20 text-center">
-    <view class="text-2xl text-gray-9!">
-      <wd-text custom-class="text-gray-9!" text="欢迎使用 Wot Design Uni" />
+    <view class="text-2xl text-gray-9">
+      <wd-text text="欢迎使用 Wot Design Uni" />
       <wd-img :width="200" :height="200" src="/static/logo.png" />
     </view>
   </view>
