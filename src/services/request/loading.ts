@@ -1,4 +1,6 @@
-// 全局 loading 提示框
+/**
+ * 全局 loading 提示框
+ */
 export class Loading {
   times = 0
   timer: ReturnType<typeof setTimeout> = setTimeout(() => {}, 300)

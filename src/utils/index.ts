@@ -1,10 +1,4 @@
-/**
- * 模拟异步请求
- */
-export function sleep(second: number = 1) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true)
-    }, 1000 * second)
-  })
-}
+export * from './tools'
+export * from './dayjs'
+export * from './env'
+export * from './functions'

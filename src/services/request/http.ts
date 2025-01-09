@@ -1,15 +1,15 @@
 import { ApiCodeEnum } from '../enums'
+import type { Data } from './helper'
+import { getBaseUrl } from '@/utils/env'
 import { useUserStore } from '@/stores'
 
-// 请求基地址
-const baseURL = `${import.meta.env.VITE_HTTP_URL}${import.meta.env.VITE_BASE_API}`
 // 拦截器配置
 const httpInterceptor = {
   // 拦截前触发
   invoke(options: UniApp.RequestOptions) {
     // 1. 非 http 开头需拼接地址
     if (!options.url.startsWith('http')) {
-      options.url = baseURL + options.url
+      options.url = getBaseUrl() + options.url
     }
     // 2. 请求超时
     options.timeout = import.meta.env.VITE_REQUEST_TIMEOUT || 10_000

@@ -12,8 +12,9 @@
 import type { UploadChangeEvent, UploadFileItem } from 'wot-design-uni/components/wd-upload/types'
 import { putUserinfo } from '@/services/apis'
 import { ApiCodeEnum } from '@/services/enums'
-import { UPLOAD_URL } from '@/services/constant'
+import { UPLOAD_URL } from '@/utils/env'
 import type { ColPickerConfirm } from '@/composables/useColPickerAreaData'
+import type { Data } from '@/services/request/helper'
 
 const toast = useToast()
 const userStore = useUserStore()

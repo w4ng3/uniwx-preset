@@ -41,29 +41,32 @@ pnpm dev:wx
 
 接着会生在 `dist/dev/mp-weixin`里编译成微信小程序，导入到微信开发者工具进行预览和调试。
 
-路由无需在 `page.json`里手动配置，采用[基于文件的路由系统自动生成](https://github.com/uni-helper/vite-plugin-uni-pages)，需要在对应 vue 文件里添加如下配置：
-```vue
-<route lang="json">
-  {
-    "layout": "default",
-    "name": "XXXRouteName",
-    "style": {
-      "navigationBarTitleText": "TITLE"
-    }
-  }
-</route>
-```
-
 ## tips
 
 - 如果提交时 husky 的勾子无法正常触发，运行 `chmod ug+x .husky/*` 后再尝试。
-- 小程序白名单域名
-   ```
-   https://api.iconify.design
-   ```
 - 配置主題可在[App.vue](./src/App.vue)或者[wot-theme.scss](./src/layouts/styles/wot-theme.scss) 里修改主题变量。
-
+- 路由无需在 `page.json`里手动配置，采用[基于文件的路由系统自动生成](https://github.com/uni-helper/vite-plugin-uni-pages)，需要在对应 vue 文件里添加如下配置：
+  ```vue
+  <route lang="json">
+    {
+      "layout": "default",
+      "name": "XXXRouteName",
+      "style": {
+        "navigationBarTitleText": "TITLE"
+      }
+    }
+  </route>
+  ```
 
 ## 感谢
 
 - [Wot Design Uni](https://github.com/Moonofweisheng/wot-design-uni)
+
+
+## TODO
+
+- [ ] 虚拟根组件 https://github.com/uni-ku/root
+- [ ] loading 最佳实践
+- [ ] request 最佳实践
+- [ ] 支持 JSX
+- [ ] 单元测试
