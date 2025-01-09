@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useTheme } from './styles/useTheme'
+import { useTheme } from '@/composables/useTheme'
 import { useTabbar } from '@/composables/useTabbar'
 
 const router = useRouter()
@@ -41,7 +41,7 @@ export default {
 </script>
 
 <template>
-  <wd-config-provider :theme="theme" :theme-vars="themeVars" custom-class="min-h-screen">
+  <wd-config-provider :theme="theme" :theme-vars="themeVars" :custom-class="`${theme} min-h-screen`">
     <wd-navbar
       :title="$Route.style?.navigationBarTitleText"
       safe-area-inset-top placeholder fixed :bordered="false"

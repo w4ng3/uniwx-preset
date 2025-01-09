@@ -24,11 +24,11 @@ Uniwx-Preset
 
 - 😃 [各种图标集为你所用](https://github.com/antfu/unocss/tree/main/packages/preset-icons)
 
-- 🔥 使用 [新的 `<script setup>` 语法](https://github.com/vuejs/rfcs/pull/227)
-
 - 📥 [API 自动加载](https://github.com/antfu/unplugin-auto-import) - 直接使用 Composition API 无需引入
 
 - 🦾 [TypeScript](https://www.typescriptlang.org/) & [ESLint](https://eslint.org/) - 保证代码质量
+
+- 🌛 [暗黑模式](./src/composables/useTheme.ts)
 
 ---
 
@@ -61,6 +61,9 @@ pnpm dev:wx
    ```
    https://api.iconify.design
    ```
-## TODO
+- 配置主題可在[App.vue](./src/App.vue)或者[wot-theme.scss](./src/layouts/styles/wot-theme.scss) 里修改主题变量。
 
-- [ ] 暗黑模式
+
+## 感谢
+
+- [Wot Design Uni](https://github.com/Moonofweisheng/wot-design-uni)

@@ -9,8 +9,6 @@
 </route>
 
 <script lang="ts" setup>
-import { useTheme } from '@/layouts/styles/useTheme'
-
 const router = useRouter()
 const userStore = useUserStore()
 const { userinfo, getAvatar, getSecurePhone, isLogin } = storeToRefs(userStore)
@@ -24,7 +22,7 @@ onShow(async () => {
   userStore.setUserinfo(user)
 })
 
-const { toggleDark } = useTheme()
+const { toggleTheme } = useTheme()
 </script>
 
 <template>
@@ -37,7 +35,7 @@ const { toggleDark } = useTheme()
         </text>
         <text>{{ getSecurePhone }}</text>
       </div>
-      <view class="ml-a" @click="toggleDark()">
+      <view class="ml-a" @click="toggleTheme()">
         <div class="i-carbon-sun dark:i-carbon-moon scale-160" />
       </view>
       <navigator
@@ -53,10 +51,14 @@ const { toggleDark } = useTheme()
       <wd-cell
         size="large"
         title="意见反馈"
+        custom-title-class="pl-3"
         is-link
         to="/pages-my/feedback"
-        icon="https://api.iconify.design/carbon:thumbs-up-double-filled.svg"
-      />
+      >
+        <template #icon>
+          <div class="i-carbon-thumbs-up-filled scale-130" />
+        </template>
+      </wd-cell>
     </wd-cell-group>
   </div>
   <div v-else class="p4">

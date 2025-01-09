@@ -62,7 +62,6 @@ export default defineManifestConfig({
     },
     usingComponents: true,
     darkmode: true,
-    themeLocation: 'theme.json',
     // permission: {
     //   'scope.userLocation': {
     //     desc: '您的位置信息将为您提供就近服务',
@@ -81,7 +80,6 @@ export default defineManifestConfig({
   },
   'h5': {
     darkmode: true,
-    themeLocation: 'theme.json',
   },
   'uniStatistics': {
     enable: false,

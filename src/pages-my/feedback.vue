@@ -36,7 +36,7 @@ function handleSubmit() {
 
 <template>
   <div class="p2">
-    <div class="mb-8 rounded-md bg-white p2">
+    <div class="mb-8 rounded-md p2 bg-base">
       <wd-form ref="form" :model="model" :rules="rules">
         <div class="px1 py2 font-bold">
           <text>反馈</text>

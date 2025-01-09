@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useTheme } from './layouts/styles/useTheme'
-
-useTheme({
+const { toggleTheme } = useTheme({
   navbarColor: '#000',
   inputIconSize: '26px',
   messageBoxContentMaxHeight: '80vh',
@@ -10,7 +8,16 @@ useTheme({
   inputCellLabelWidth: '50px',
 })
 
-onLaunch(() => {})
+onLaunch(() => {
+  const baseinfo = uni.getAppBaseInfo()
+  // 启动时根据系统模式切换主题
+  if (baseinfo.hostTheme === 'dark') {
+    toggleTheme(baseinfo.hostTheme)
+  }
+  uni.onThemeChange((e) => {
+    toggleTheme(e.theme)
+  })
+})
 </script>
 
 <style lang="scss">

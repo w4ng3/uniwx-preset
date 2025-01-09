@@ -12,6 +12,18 @@ page {
   --wot-picker-column-disabled-color: #5b5b5b;
 }
 
+.wot-theme-dark {
+  background: #121212;
+  color: white;
+  color-scheme: dark;
+}
+
+.wot-theme-light {
+  background: #fff;
+  color: #121212;
+  color-scheme: light;
+}
+
 view.wd-tabbar {
   box-sizing: content-box;
 }
@@ -19,6 +31,10 @@ view.wd-tabbar {
 .wd-input {
   border-radius: 6px;
   padding: 4px;
+}
+// 编译成微信小程序后，bug:组件输入框占位文本颜色跟随系统改变
+.wd-input__placeholder {
+  color: #7c7c7c;
 }
 
 // $匹配末尾，^匹配开头，*匹配全部
@@ -30,10 +46,4 @@ view.wd-tabbar {
 
 [class$='__label'] {
   font-weight: bold;
-}
-
-/* 深色模式样式 */
-html.dark {
-  background: #121212;
-  color-scheme: dark;
 }
