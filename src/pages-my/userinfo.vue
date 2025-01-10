@@ -14,7 +14,7 @@ import { putUserinfo } from '@/services/apis'
 import { ApiCodeEnum } from '@/services/enums'
 import { UPLOAD_URL } from '@/utils/env'
 import type { ColPickerConfirm } from '@/composables/useColPickerAreaData'
-import type { Data } from '@/services/request/helper'
+import type { CustomData } from '@/services/request/helper'
 
 const toast = useToast()
 const userStore = useUserStore()
@@ -47,7 +47,7 @@ const education_columns: ColumnItem[] = [
 const fileList = ref<UploadFileItem[]>([{ url: `${model.avatar}.png`, uid: 0 }])
 function handleUploadChange({ fileList: files }: UploadChangeEvent) {
   fileList.value = files.map((item) => {
-    const resp: Data<any> = JSON.parse(item.response as string)
+    const resp: CustomData = JSON.parse(item.response as string)
     if (resp.code !== ApiCodeEnum.SUCCESS) {
       item.status = 'fail'
     }

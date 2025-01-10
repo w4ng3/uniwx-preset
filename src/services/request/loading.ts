@@ -3,7 +3,7 @@
  */
 export class Loading {
   times = 0
-  timer: ReturnType<typeof setTimeout> = setTimeout(() => {}, 300)
+  timer: ReturnType<typeof setTimeout> = setTimeout(() => {}, 0)
 
   show(loading: boolean) {
     if (!loading) { return } // 如果传入的 loading 属性为 false，则不处理

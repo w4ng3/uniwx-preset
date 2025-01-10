@@ -1,6 +1,7 @@
-import un, { type UnConfig } from '@uni-helper/uni-network'
+import un, { type UnConfig, type UnResponse } from '@uni-helper/uni-network'
+import { ApiCodeEnum } from '../enums'
 import { Loading } from './loading'
-import { getBaseUrl } from '@/utils'
+import { getBaseUrl, getReqTimeout } from '@/utils'
 
 export * from './helper'
 
@@ -19,6 +20,7 @@ export const instance = un.create({
   method: 'POST',
   headers: { 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8' },
   data: {},
+  timeout: getReqTimeout(),
   // 默认展示全局 loading
   loading: true,
 })
@@ -27,59 +29,53 @@ const loading = new Loading()
 // 请求拦截器
 instance.interceptors.request.use((config) => {
   loading.show(config.loading)
+  const userStore = useUserStore()
+  config.headers = {
+    ...config.headers,
+    Authorization: userStore.token,
+  }
   return config
 })
 
-instance.interceptors.response.use((response: any) => {
+// 响应拦截器
+instance.interceptors.response.use((response: UnResponse<any>) => {
   const { errno } = response
   if (errno) {
-    uni.showToast({
-      icon: 'none',
-      title: '服务器出错，请稍后再试。',
-    })
+    uni.showToast({ icon: 'none', title: '服务器出错，请稍后再试。' })
     loading.hide(true)
     return Promise.reject(response)
   }
-  loading.hide(response.config.loading)
-  return response.data
+  loading.hide(response.config?.loading)
   // TODO 返回数据根据业务需求修改
-  /* const { code, data, msg } = response.data
-  if (code === 1)
-    return data
-
-  showToast({
-    title: msg,
+  const { code, data } = response.data
+  if (code === undefined) { return response.data }
+  else if (code === ApiCodeEnum.SUCCESS) { return data }
+  handleError(response, (error) => {
+    if (error.code === ApiCodeEnum.UNAUTHORIZEDC) {
+      uni.showToast({ icon: 'error', title: '登录失效' })
+      // 清理用户信息，重定向到登录页
+      const userStore = useUserStore()
+      userStore.$reset()
+      uni.redirectTo({ url: '/pages-my/login' })
+    }
+    else {
+      uni.showToast({ title: error.msg, icon: 'none' })
+    }
   })
-  handleError(response)
-  return Promise.reject(response.data) */
+  return Promise.reject(response.data)
 }, (error) => {
   loading.hide(error.config.loading)
   return Promise.reject(error)
 })
 
-type RequestData = Record<string, any>
-
 /**
  * 预设的请求数据类型和响应数据类型
  * @description 泛型内数据类型：<响应数据类型, 请求数据类型>，可不传，默认为 <Record<string, any>, Record<string, any>>
  */
-export async function request<T, D = RequestData>(
+export async function request<T, D = Record<string, any>>(
   url: string,
   data?: D,
   config?: UnConfig<T, D>,
 ) {
   return instance.request<T, D, T>({ url, data, ...config })
 }
-
-
-// interface GithubReposRes {
-//   name: string
-//   description: string
-//   html_url: string
-// }
-
-// export async function fetchGithubRepos() {
-//   return await request<GithubReposRes>('/repos/sunpm/unisave', {}, {
-//     method: 'GET',
-//   })
-// }

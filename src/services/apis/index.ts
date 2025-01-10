@@ -34,7 +34,7 @@ export const getUserinfo = () => {
 }
 
 export const putUserinfo = (data: UserinfoVO) => {
-  // return http({ url: '/user/update', data })
+  // return request('/user/update',data)
   return Promise.resolve({
     code: 0,
     msg: 'success',

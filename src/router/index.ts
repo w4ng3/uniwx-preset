@@ -20,7 +20,7 @@ function generateRoutes() {
   return routes
 }
 // 路由白名单
-const whiteRoutes: NavigateToOptions['url'][] = ['/pages/index', '/pages/hi', '/pages/my', '/pages-my/login']
+const whiteRoutes: NavigateToOptions['url'][] = ['/pages/index', '/pages/hot', '/pages/my', '/pages-my/login']
 
 
 const router = createRouter({

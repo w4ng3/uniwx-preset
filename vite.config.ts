@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import process from 'node:process'
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
@@ -10,7 +11,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import { WotResolver } from '@uni-helper/vite-plugin-uni-components/resolvers'
 import { uniPolyfill } from './uni-polyfill'
 
-// https://vitejs.dev/config/
+/** @see https://vitejs.dev/config/ */
 export default async () => {
   const UnoCSS = (await import('unocss/vite')).default
 
@@ -19,24 +20,24 @@ export default async () => {
 
   return defineConfig({
     plugins: [
-      // https://github.com/uni-helper/vite-plugin-uni-manifest
+      /** @see https://github.com/uni-helper/vite-plugin-uni-manifest */
       UniHelperManifest(),
-      // https://github.com/uni-helper/vite-plugin-uni-pages
+      /** @see https://github.com/uni-helper/vite-plugin-uni-pages */
       UniHelperPages({
         dts: 'src/router/uni-pages.d.ts',
         exclude: ['**/components/**'],
         subPackages: ['src/pages-my'],
       }),
-      // https://github.com/uni-helper/vite-plugin-uni-layouts
+      /** @see https://github.com/uni-helper/vite-plugin-uni-layouts */
       UniHelperLayouts(),
-      // https://github.com/uni-helper/vite-plugin-uni-components
+      /** @see https://github.com/uni-helper/vite-plugin-uni-components */
       UniHelperComponents({
         resolvers: [WotResolver()],
         dts: 'src/components.d.ts',
         directoryAsNamespace: true,
       }),
       Uni(),
-      // https://github.com/antfu/unplugin-auto-import
+      /** @see https://github.com/antfu/unplugin-auto-import */
       AutoImport({
         imports: ['vue', '@vueuse/core', 'uni-app', 'pinia', {
           from: 'uni-mini-router',
@@ -57,8 +58,10 @@ export default async () => {
         dirs: ['src/composables', 'src/stores', 'src/services/**'],
         vueTemplate: true,
       }),
-      // https://github.com/antfu/unocss
-      // see unocss.config.ts for config
+      /**
+       * unocss.config.ts for config
+       * @see  https://github.com/antfu/unocss
+       */
       UnoCSS(),
       uniPolyfill(),
     ],
@@ -70,19 +73,26 @@ export default async () => {
         },
       ],
     },
-    // server: {
-    //   open: false,
-    //   proxy: {
-    //     '/api': {
-    //       target: 'http://192.168.50.147:8081',
-    //       changeOrigin: true,
-    //       rewrite: (path) => path.replace(/^\/api/, ''),
-    //     },
-    //   },
-    // },
+    server: {
+      open: false,
+      port: 5173,
+      // proxy: {
+      //   '/api': {
+      //     target: 'https://api.github.com',
+      //     changeOrigin: true,
+      //     secure: false,
+      //     rewrite: path => path.replace(/^\/api/, ''),
+      //   },
+      // },
+    },
     // build: {
     //   // 开发阶段启用源码映射
     //   sourcemap: process.env.NODE_ENV === 'development',
     // },
+    /** Vitest @see https://github.com/vitest-dev/vitest */
+    test: {
+      environment: 'jsdom',
+      setupFiles: [resolve(__dirname, './test/setupTests.ts')],
+    },
   })
 }

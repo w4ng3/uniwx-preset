@@ -30,6 +30,8 @@ Uniwx-Preset
 
 - 🌛 [暗黑模式](./src/composables/useTheme.ts)
 
+- ⚙️ 使用 [Vitest](https://github.com/vitest-dev/vitest) 进行单元测试
+
 ---
 
 ## 快速启动
@@ -62,11 +64,15 @@ pnpm dev:wx
 
 - [Wot Design Uni](https://github.com/Moonofweisheng/wot-design-uni)
 
-
 ## TODO
 
 - [ ] 虚拟根组件 https://github.com/uni-ku/root
-- [ ] loading 最佳实践
-- [ ] request 最佳实践
-- [ ] 支持 JSX
-- [ ] 单元测试
+
+
+## 单元测试
+
+目前 vitest和在uniapp里运行会出错：`Cannot find module ‘vuex/package.json...`
+
+如果不安装 vuex, 则需在 [此处](./node_modules/@dcloudio/uni-h5-vite/dist/plugins/ssr.js) 注释掉 vuex 相关的4行代码。
+
+为了方便团队使用，目前在 `devDependencies` 添加了 vuex。

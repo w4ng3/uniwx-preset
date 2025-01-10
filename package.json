@@ -21,7 +21,8 @@
     "commit": "git-cz",
     "release-major": "standard-version --release-as major",
     "release-minor": "standard-version --release-as minor",
-    "release-patch": "standard-version --release-as patch"
+    "release-patch": "standard-version --release-as patch",
+    "test": "vitest"
   },
   "dependencies": {
     "@dcloudio/uni-app": "3.0.0-4040520250104002",
@@ -89,7 +90,9 @@
     "unocss": "^0.62.3",
     "unplugin-auto-import": "^0.18.2",
     "vite": "^5.2.8",
-    "vue-tsc": "^2.0.28"
+    "vitest": "^2.1.8",
+    "vue-tsc": "^2.0.28",
+    "vuex": "^4.1.0"
   },
   "pnpm": {
     "peerDependencyRules": {
