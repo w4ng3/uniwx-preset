@@ -18,6 +18,7 @@ const { getSecurePhone } = storeToRefs(userStore)
 
 const handleLogout = () => {
   message.confirm('是否退出登录？').then(() => {
+    postUserLogout()
     userStore.$reset()
     router.pushTab('/pages/my')
   })

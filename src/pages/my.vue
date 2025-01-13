@@ -18,7 +18,7 @@ const naviUserinfo = () => {
 }
 
 onShow(async () => {
-  const { data: user } = await getUserinfo()
+  const user = await getUserinfo(userinfo.value.id)
   userStore.setUserinfo(user)
 })
 

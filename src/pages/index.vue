@@ -18,7 +18,7 @@ interface GithubReposRes {
 const repo = ref<GithubReposRes>()
 
 async function fetchGithubRepos() {
-  return await request<GithubReposRes>('/repos/Moonofweisheng/wot-design-uni', {}, {
+  return await request<GithubReposRes>('https://api.github.com/repos/Moonofweisheng/wot-design-uni', {
     method: 'GET',
   }).then((res) => {
     repo.value = res

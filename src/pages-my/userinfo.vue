@@ -44,7 +44,7 @@ const education_columns: ColumnItem[] = [
 // 图片上传
 // 如果要改成直传OSS,参考这里：https://wot-design-uni.cn/component/upload.html#上传至云存储
 // 或者：https://wot-design-uni.cn/component/upload.html#自定义上传方法
-const fileList = ref<UploadFileItem[]>([{ url: `${model.avatar}.png`, uid: 0 }])
+const fileList = ref<UploadFileItem[]>([{ url: model.avatar, uid: 0 }])
 function handleUploadChange({ fileList: files }: UploadChangeEvent) {
   fileList.value = files.map((item) => {
     const resp: CustomData = JSON.parse(item.response as string)
@@ -109,7 +109,7 @@ const handleConfirm: ColPickerConfirm = ({ value, selectedItems }) => {
           @confirm="handleConfirm"
         />
         <wd-gap />
-        <wd-cell title="性别:" custom-class="bg-#f7f7f7! rounded-md font-bold">
+        <wd-cell title="性别:" custom-class="light:bg-#f7f7f7! rounded-md font-bold">
           <wd-radio-group v-model="model.gender" cell shape="dot" inline>
             <wd-radio :value="0">
               男

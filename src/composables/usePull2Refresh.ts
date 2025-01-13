@@ -1,6 +1,6 @@
 import { onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app'
-import type { Reactive, Ref } from '@vue/runtime-core'
-import { ref } from 'vue'
+import type { Reactive } from '@vue/runtime-core'
+import { type Ref, ref } from 'vue'
 /**
  * 下拉刷新，上拉加载
  * @list 响应列表
@@ -19,7 +19,7 @@ export default <T extends IPage>(list: Ref<any[]>, url: string, query: Reactive<
     if (pn === startPage) {
       pageNum.value = startPage // 防止在onShow里调用onLoadList时pageNum()未回归初始化的问题
     }
-    request(url, query)
+    request(url, { data: query })
       .then((res: any) => {
         const respList = res.list
         list.value = pn === startPage ? respList : list.value.concat(respList)

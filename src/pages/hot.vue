@@ -3,7 +3,8 @@
     "layout": "tabbar",
     "name": "hot",
     "style": {
-      "navigationBarTitleText": "热点"
+      "navigationBarTitleText": "热点",
+      "enablePullDownRefresh": true
     }
   }
 </route>
@@ -12,52 +13,44 @@
 import { formatFullTime } from '@/utils'
 
 interface HotNews {
-  data: NewsItem[]
-  name: string
-  subtitle: string
-  success: boolean
-  update_time: string
-}
-
-interface NewsItem {
+  id: number
+  cover: string
   hot: string
-  index: number
-  mobil_url: string
   title: string
-  url: string
 }
 
-const news = ref<HotNews>({
-  data: [],
-  name: '',
-  subtitle: '',
-  success: false,
-  update_time: '',
+const news = ref<HotNews[]>([])
+const reqParams = reactive<IPage>({
+  page: 1,
+  limit: 10,
 })
+const { onLoadList, loadState } = usePull2Refresh(news, '/hot/list', reqParams)
 
 onMounted(async () => {
-  news.value = await request<HotNews>('https://api.vvhan.com/api/hotlist/toutiao', {}, { method: 'GET' })
+  onLoadList()
 })
 </script>
 
 <template>
   <view class="px3 py5">
-    <view class="text-xl font-bold">
-      {{ news.name }}
-    </view>
-    <text>{{ formatFullTime(news.update_time) }}</text>
-    <view v-for="item in news.data" :key="item.index" class="mb1 flex items-center rounded-lg bg-#9da6e0 p2">
-      <view class="size-6 content-center rounded-full bg-#7bb3d5 text-center">
-        {{ item.index }}
-      </view>
-      <view>
-        <view> {{ item.title }}</view>
-        <view class="flex gap2">
-          <view class="i-carbon-fire text-red" />
-          <view> {{ item.hot }}</view>
+    <text>{{ formatFullTime(new Date()) }}</text>
+    <wd-status-tip v-if="!news.length" image="content" tip="暂无内容" />
+    <block v-else>
+      <view v-for="(item, index) in news" :key="index" class="mb1 flex items-center gap2 rounded-lg bg-#9da6e0 p2">
+        <view class="size-6 content-center rounded-full bg-#7bb3d5 text-center">
+          {{ index }}
+        </view>
+        <wd-img :width="100" :height="100" :src="item.cover" custom-image="rounded-xl" />
+        <view>
+          <view> {{ item.title }}</view>
+          <view class="flex gap2">
+            <view class="i-carbon-fire text-red" />
+            <view> {{ item.hot }}</view>
+          </view>
         </view>
       </view>
-    </view>
+      <wd-loadmore :state="loadState" />
+    </block>
   </view>
 </template>
 

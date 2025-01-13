@@ -15,8 +15,7 @@ export function getHttpUrl(): string {
 }
 
 export function getBaseUrl(): string {
-  // return `${import.meta.env.VITE_HTTP_URL}${import.meta.env.VITE_BASE_API}`
-  return import.meta.env.VITE_HTTP_URL
+  return `${import.meta.env.VITE_HTTP_URL}${import.meta.env.VITE_BASE_API}`
 }
 
 /** 文件上传地址 */

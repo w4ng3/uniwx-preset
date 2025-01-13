@@ -17,27 +17,29 @@ const router = useRouter()
 const userStore = useUserStore()
 const { token } = storeToRefs(userStore)
 
-const model = reactive({
+const model = reactive<UserLoginDTO>({
   loginType: 0,
   phone: '',
   password: '',
+  code: '',
 })
 
 const form = ref()
 const { phoneRule } = useFormRule()
 
-async function sureToLogin(dto) {
-  toast.loading('正在登录')
-  const { data } = await postUserLogin(dto)
+async function sureToLogin() {
+  // toast.loading('正在登录')
+  const data = await postUserLogin(model)
   token.value = data.token
-  toast.close()
+  // toast.close()
   router.pushTab('/pages/my')
 }
 
 function handleSubmit() {
   form.value.validate().then(({ valid }) => {
     if (valid) {
-      sureToLogin(model)
+      model.loginType = 2
+      sureToLogin()
     }
   })
 }
@@ -49,13 +51,9 @@ const getPhoneNumber = (e: ButtonOnGetphonenumberEvent) => {
     toast.error('获取手机号失败')
   }
   else {
-    postUserLogin({
-      code: e.detail.code as string,
-      loginType: 1,
-    }).then((res) => {
-      token.value = res.data.token
-      router.pushTab('/pages/my')
-    })
+    model.code = e.detail.code
+    model.loginType = 0
+    sureToLogin()
   }
 }
 
@@ -64,7 +62,7 @@ const showDialog = ref<boolean>(false)
 const privacyStr = ref<string>('')
 
 onLoad(async () => {
-  const { data } = await getRichText({ type: 1 })
+  const data = await getRichText({ type: 1 })
   privacyStr.value = data
 })
 </script>

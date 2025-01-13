@@ -1,3 +1,23 @@
+interface UserLoginDTO {
+  /**
+   * 登录方式:
+   * 0-微信授权登录（code）;
+   * 1-手机号验证码登录（phone & code）;
+   * 2-手机号密码登录（phone & password）;
+   */
+  loginType: 0 | 1 | 2
+  /**
+   * 短信验证码或者微信code
+   */
+  code?: string
+  password?: string
+  phone?: string
+}
+
+interface UserLoginVO {
+  token: string
+}
+
 interface UserinfoVO {
   id: number
   name: string
@@ -15,3 +35,5 @@ interface UserinfoVO {
    */
   area: string[]
 }
+
+type UserinfoUpdateDTO = Omit<UserinfoVO, 'id' | 'phone'>

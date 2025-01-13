@@ -20,7 +20,7 @@ const style = {
 }
 
 onLoad(async () => {
-  const { data } = await getRichText({ type: Number(query.type) })
+  const data = await getRichText({ type: query.type })
   richText.value = data
 })
 </script>
@@ -28,7 +28,7 @@ onLoad(async () => {
 <template>
   <wd-navbar
     :title="query.title"
-    :bordered="false" safe-area-inset-top placeholder left-arrow fixed
+    :bordered="false" safe-area-inset-top left-arrow placeholder fixed
     @click-left="$Router.back"
   />
   <view class="p3 text-lg">

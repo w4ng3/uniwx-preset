@@ -1,55 +1,19 @@
-export const postUserLogin = (dto: any) => {
-  return Promise.resolve({
-    code: 0,
-    msg: 'success',
-    data: {
-      token: '1145141919810',
-      dto,
-    },
-  })
+export const postUserLogin = (data: UserLoginDTO) => {
+  return request<UserLoginVO>('/user/login', { data })
 }
 
 export const postUserLogout = () => {
-  return Promise.resolve({
-    code: 0,
-    msg: 'success',
-  })
+  return request('/user/logout')
 }
 
-export const getUserinfo = () => {
-  return Promise.resolve({
-    code: 0,
-    msg: 'success',
-    data: {
-      id: 4,
-      name: '王東',
-      avatar: 'https://avatars.githubusercontent.com/u/87717361?v=4',
-      phone: '17314433311',
-      gender: 0,
-      education: 2,
-      description: '火烧火燎的感觉正在飘散',
-      area: ['110000', '110100', '110101'],
-    } as UserinfoVO,
-  })
+export const getUserinfo = (id: number) => {
+  return request<UserinfoVO>(`/user/${id}`, { method: 'GET', loading: false })
 }
 
-export const putUserinfo = (data: UserinfoVO) => {
-  // return request('/user/update',data)
-  return Promise.resolve({
-    code: 0,
-    msg: 'success',
-    data,
-  })
+export const putUserinfo = (data: UserinfoUpdateDTO) => {
+  return request('/user/update', { data })
 }
 
-
-export const getRichText = (data: { type: number }) => {
-  return Promise.resolve({
-    code: 0,
-    msg: 'success',
-    data: `<div>
-            <p>${data.type}- ...</p>
-            <img src="https://avatars.githubusercontent.com/u/87717361?v=4"></img>
-           </div>`,
-  })
+export const getRichText = (query: { type: number | string }) => {
+  return request<string>('/richtext', { method: 'GET', params: { ...query } })
 }

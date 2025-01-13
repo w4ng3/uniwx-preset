@@ -69,13 +69,13 @@ instance.interceptors.response.use((response: UnResponse<any>) => {
 })
 
 /**
- * 预设的请求数据类型和响应数据类型
- * @description 泛型内数据类型：<响应数据类型, 请求数据类型>，可不传，默认为 <Record<string, any>, Record<string, any>>
+ * 预设的响应数据类型和请求数据类型
+ * @description 泛型内数据类型：<响应数据类型, 请求数据类型>，可不传，默认为 <Record<string, any>
+ * @method 默认POST
  */
-export async function request<T, D = Record<string, any>>(
+export function request<T, D = Record<string, any>>(
   url: string,
-  data?: D,
-  config?: UnConfig<T, D>,
+  config?: UnConfig<T, D> & { loading?: boolean },
 ) {
-  return instance.request<T, D, T>({ url, data, ...config })
+  return instance.request<T, D, T>({ url, ...config })
 }
