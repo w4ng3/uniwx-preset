@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "uni",
+    "debug": "uni --devtools --open",
     "build": "uni build",
     "dev:custom": "uni -p",
     "build:custom": "uni build -p",
@@ -90,7 +91,7 @@
     "unocss": "^65.4.0",
     "unocss-applet": "^0.9.0",
     "unplugin-auto-import": "^0.18.2",
-    "vite": "^5.2.8",
+    "vite": "^5.4.11",
     "vitest": "^2.1.8",
     "vue-tsc": "^2.0.28",
     "vuex": "^4.1.0"

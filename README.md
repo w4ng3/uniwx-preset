@@ -52,7 +52,6 @@ pnpm dev:wx
 
 ## 待办
 
-- [ ] devtools
 - [ ] 补全单元测试
 - [ ] [虚拟根组件](https://github.com/uni-ku/root)
 

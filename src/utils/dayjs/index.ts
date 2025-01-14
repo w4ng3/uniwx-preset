@@ -1,12 +1,20 @@
 import dayjs from 'dayjs'
 import customParseFormat from 'dayjs/plugin/customParseFormat'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
 import { isNumber } from '../'
 
 // 导入本地化语言
 import 'dayjs/locale/zh-cn'
 
-dayjs.locale('zh-cn')
+// 扩展插件
 dayjs.extend(customParseFormat)
+dayjs.extend(utc)
+dayjs.extend(timezone)
+
+// 设置语言和时区
+dayjs.locale('zh-cn')
+dayjs.tz.setDefault('Asia/Shanghai')
 
 export type dayJsDate = string | number | Date
 
@@ -21,14 +29,12 @@ export function isMillisecondTimestamp(value: dayJsDate) {
 /** 转换为 dayjs 接收参数 */
 export function convertToDayjsParam(value: dayJsDate) {
   if (!isMillisecondTimestamp(value) && isNumber(value)) { return value * 1000 }
-
   return value
 }
 
 /** 格式化时间 */
 export function formatTime(date?: dayJsDate, format = 'YYYY-MM-DD') {
   if (!date) { return '' }
-
   return dayjs(convertToDayjsParam(date)).format(format)
 }
 
