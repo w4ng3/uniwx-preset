@@ -35,11 +35,7 @@ export function convertToDayjsParam(value: dayJsDate) {
 /** 格式化时间 */
 export function formatTime(date?: dayJsDate, format = 'YYYY-MM-DD') {
   if (!date) { return '' }
-  return dayjs(convertToDayjsParam(date)).format(format)
-}
-
-export function stringFormat(date: string, format: string) {
-  return dayjs(date, format)
+  return dayjs(convertToDayjsParam(date)).tz().format(format)
 }
 
 export function formatCalendar(date: dayJsDate) {
@@ -53,7 +49,7 @@ export function formatFullTime(date?: dayJsDate) {
 
 /** 计算日期差值 */
 export function diffDate(start: dayJsDate, end: dayJsDate, unit: dayjs.OpUnitType = 'day') {
-  return dayjs(convertToDayjsParam(start)).diff(dayjs(convertToDayjsParam(end)), unit)
+  return dayjs(convertToDayjsParam(start)).tz().diff(dayjs(convertToDayjsParam(end)).tz(), unit)
 }
 
 /** 获取今天和明天的日期 */

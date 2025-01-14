@@ -1,6 +1,6 @@
 {
   "disableEmoji": false,
-  "list": ["test", "feat", "fix", "chore", "docs", "refactor", "style", "ci", "perf", "release", "revert", "build"],
+  "list": ["test", "feat", "fix", "chore", "docs", "refactor", "style", "ci", "perf", "revert", "build"],
   "maxMessageLength": 64,
   "minMessageLength": 2,
   "questions": ["type", "scope", "subject", "body", "breaking", "issues", "lerna"],
@@ -40,11 +40,6 @@
       "description": "Code Refactoring | 代码重构",
       "emoji": "♻️ ",
       "value": "refactor"
-    },
-    "release": {
-      "description": "Create a release commit | 发版提交",
-      "emoji": "🏹",
-      "value": "release"
     },
     "style": {
       "description": "Styles | 风格",
