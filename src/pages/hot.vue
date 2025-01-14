@@ -19,12 +19,12 @@ interface HotNews {
   title: string
 }
 
-const news = ref<HotNews[]>([])
+const list = ref<HotNews[]>([])
 const reqParams = reactive<IPage>({
   page: 1,
   limit: 10,
 })
-const { onLoadList, loadState } = usePull2Refresh(news, '/hot/list', reqParams)
+const { onLoadList, loadState } = usePull2Refresh('/hot/list', list, reqParams)
 
 onMounted(async () => {
   onLoadList()
@@ -34,9 +34,9 @@ onMounted(async () => {
 <template>
   <view class="px3 py5">
     <text>{{ formatFullTime(new Date()) }}</text>
-    <wd-status-tip v-if="!news.length" image="content" tip="暂无内容" />
+    <wd-status-tip v-if="!list.length" image="content" tip="暂无内容" />
     <block v-else>
-      <view v-for="(item, index) in news" :key="index" class="mb1 flex items-center gap2 rounded-lg bg-#9da6e0 p2">
+      <view v-for="(item, index) in list" :key="index" class="mb1 flex items-center gap2 rounded-lg bg-#9da6e0 p2">
         <view class="size-6 content-center rounded-full bg-#7bb3d5 text-center">
           {{ index }}
         </view>

@@ -2,7 +2,7 @@
 Uniwx-Preset
 </h2>
 
-<p align="center">基于<a href="[vitesse-uni-app](https://github.com/uni-helper/vitesse-uni-app)">vitesse-uni-app</a>的Wot Design Uni 组件库快速起手项目</p>
+<p align="center">基于 <a href="https://github.com/uni-helper/vitesse-uni-app"> vitesse-uni-app </a> 的Wot Design Uni 组件库快速起手项目</p>
 
 <p align="center">
 用于开发微信小程序

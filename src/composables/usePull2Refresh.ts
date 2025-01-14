@@ -1,14 +1,15 @@
 import { onPullDownRefresh, onReachBottom } from '@dcloudio/uni-app'
 import type { Reactive } from '@vue/runtime-core'
 import { type Ref, ref } from 'vue'
+
 /**
  * 下拉刷新，上拉加载
- * @list 响应列表
  * @url 请求url
- * @query 额外body传参
+ * @list 响应列表
+ * @query 查询条件，body传参
  * @startPage 起始页 默认 1
  */
-export default <T extends IPage>(list: Ref<any[]>, url: string, query: Reactive<T>, startPage: number = 1) => {
+export default <T extends IPage>(url: string, list: Ref<any[]>, query: Reactive<T>, startPage: number = 1) => {
   const { page: pageNum, limit } = toRefs(query)
   // 加载状态
   // 可以在列表底部添加组件 <wd-loadmore :state="loadState" /> 显示状态
@@ -36,18 +37,24 @@ export default <T extends IPage>(list: Ref<any[]>, url: string, query: Reactive<
       .catch(() => (loadState.value = 'error'))
   }
 
+  // 监听用户下拉动作
   onPullDownRefresh(() => {
-    // console.log('usepull2refresh-- 监听用户下拉动作')
     onLoadList()
   })
 
+  // 页面滚动到底部
   onReachBottom(() => {
-    // console.log('页面滚动到底部', new Date(), loadState.value)
     if (loadState.value === 'finished') {
-      //
+      return void 0
     }
     else { onLoadList(++pageNum.value) }
   })
 
-  return { onLoadList, onPullDownRefresh, onReachBottom, pageNum, loadState }
+  return {
+    onLoadList,
+    onPullDownRefresh,
+    onReachBottom,
+    pageNum,
+    loadState,
+  }
 }

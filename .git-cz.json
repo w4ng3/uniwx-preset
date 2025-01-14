@@ -2,7 +2,7 @@
   "disableEmoji": false,
   "list": ["test", "feat", "fix", "chore", "docs", "refactor", "style", "ci", "perf", "release", "revert", "build"],
   "maxMessageLength": 64,
-  "minMessageLength": 3,
+  "minMessageLength": 2,
   "questions": ["type", "scope", "subject", "body", "breaking", "issues", "lerna"],
   "scopes": [],
   "types": {
@@ -66,5 +66,14 @@
       "emoji": "✅",
       "value": "test"
     }
+  },
+  "messages": {
+    "type": "请选择提交类型:",
+    "customScope": "请输入修改范围(可选):",
+    "subject": "请简要描述提交(必填):",
+    "body": "请输入详细描述(可选):",
+    "breaking": "列出任何破坏性更改(可选)",
+    "footer": "请输入要关闭的issue(可选):",
+    "confirmCommit": "确认使用以上信息提交？(y/n/e/h)"
   }
 }
