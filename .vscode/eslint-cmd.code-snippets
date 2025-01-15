@@ -1,0 +1,135 @@
+{
+  "eep-sorted": {
+    "prefix": "/// keep-sorted",
+    "body": [
+      "/// keep-sorted"
+    ],
+    "description": "保持对象/数组/接口始终排序"
+  },
+  "to-function": {
+    "prefix": "/// to-function",
+    "body": [
+      "/// to-function"
+    ],
+    "description": "将箭头函数转换为普通函数"
+  },
+  "to-arrow": {
+    "prefix": "/// to-arrow",
+    "body": [
+      "/// to-arrow"
+    ],
+    "description": "将普通函数转换为箭头函数"
+  },
+  "to-for-each": {
+    "prefix": "/// to-for-each",
+    "body": [
+      "/// to-for-each"
+    ],
+    "description": "将 for-in/for-of 循环转换为.forEach()"
+  },
+  "to-for-of": {
+    "prefix": "/// to-for-of",
+    "body": [
+      "/// to-for-of"
+    ],
+    "description": "转换.forEach()为 for-of 循环"
+  },
+  "to-promise-all": {
+    "prefix": "/// to-promise-all",
+    "body": [
+      "/// to-promise-all"
+    ],
+    "description": "将 exp 序列转换await为await Promise.all()"
+  },
+  "to-string-literal": {
+    "prefix": "/// to-string-literal",
+    "body": [
+      "/// to-string-literal"
+    ],
+    "description": "将模板文字转换为字符串连接"
+  },
+  "to-template-literal": {
+    "prefix": "/// to-template-literal",
+    "body": [
+      "/// to-template-literal"
+    ],
+    "description": "将字符串连接转换为模板文字"
+  },
+  "hoist-regexp": {
+    "prefix": "/// hoist-regexp",
+    "body": [
+      "/// hoist-regexp"
+    ],
+    "description": "将正则表达式提升至顶层"
+  },
+  "inline-arrow": {
+    "prefix": "/// inline-arrow",
+    "body": [
+      "/// inline-arrow"
+    ],
+    "description": "箭头函数的内联返回语句"
+  },
+  "keep-aligned": {
+    "prefix": "/// keep-aligned",
+    "body": [
+      "/// keep-aligned"
+    ],
+    "description": "保持代码块内的特定符号垂直对齐"
+  },
+  "keep-unique": {
+    "prefix": "/// keep-unique",
+    "body": [
+      "/// keep-unique"
+    ],
+    "description": "保持数组项唯一，删除重复项"
+  },
+  "no-shorthand": {
+    "prefix": "/// no-shorthand",
+    "body": [
+      "/// no-shorthand"
+    ],
+    "description": "将对象简写属性扩展为其完整形式"
+  },
+  "no-type": {
+    "prefix": "/// no-type",
+    "body": [
+      "/// no-type"
+    ],
+    "description": "删除 TypeScript 类型注释"
+  },
+  "no-x-above": {
+    "prefix": "/// no-x-above",
+    "body": [
+      "/// no-$1-above"
+    ],
+    "description": "在当前块内，禁止注释上方(above)或下方(below)的某些语法"
+  },
+  "regex101": {
+    "prefix": "// @regex101",
+    "body": [
+      "// @regex101"
+    ],
+    "description": "在 jsdoc 注释中为您的 RegExp 模式生成最新的regex101链接。帮助您轻松测试和检查 RegExp"
+  },
+  "to-destructuring": {
+    "prefix": "/// to-destructuring",
+    "body": [
+      "/// to-destructuring"
+    ],
+    "description": "将赋值表达式转换为解构赋值"
+  },
+  "to-dynamic-import": {
+    "prefix": "/// to-dynamic-import",
+    "body": [
+      "/// to-dynamic-import"
+    ],
+    "description": "将导入语句转换为动态导入"
+  },
+  "to-ternary": {
+    "prefix": "/// to-ternary",
+    "body": [
+      "/// to-ternary"
+    ],
+    "description": "将if-else语句转换为ternary expression"
+  },
+}
